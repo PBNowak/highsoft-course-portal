@@ -160,3 +160,22 @@ nav a:hover {
     font-weight: 600;
     margin-bottom: 10px;
 }
+
+
+.course-button {
+    background-color: #4A55C9;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 20px;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    width: 100%;
+    margin-top: 16px;
+}
+
+.course-button:disabled {
+    opacity: 1;
+    cursor: not-allowed;
+}
