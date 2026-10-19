@@ -126,14 +126,15 @@ filtering, progress tracking, and database integration, is planned.
 - Functional "Load more" button implemented: six courses appear initially, with three additional courses revealed when clicked.
 - "View course" buttons added as placeholders for future Course Detail pages.
 - Footer added with navigation links and project information.
-- Search and filtering functionality are not yet implemented.
+- Live course search implemented using JavaScript, allowing users to search course titles and descriptions.
+- Course count and Load more button update automatically based on search results. Filter dropdowns are not yet functional.
 - Responsive styling and further UI improvements are in progress.
 
   
 ### Next Steps
 
 - Complete the Course Overview page styling based on the Figma design.
-- Implement functional course search and filtering.
+- Implement functional course filtering using the existing dropdown menus.
 - Develop the Course Detail and Lesson pages.
 - Set up the SQLite database to store course information.
 - Implement lesson completion and learner progress tracking.

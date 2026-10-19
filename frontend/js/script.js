@@ -13,17 +13,21 @@ async function loadCourses() {
         const courseList = document.getElementById("course-list");
         const courseCount = document.getElementById("course-count");
         const loadMoreButton = document.getElementById("load-more-btn");
+        const searchInput = document.getElementById("course-search");
 
         courseCount.textContent = `${courses.length} courses available`;
         courseList.innerHTML = "";
 
         // Start by showing six courses
         let visibleCourses = 6;
+        // Keep track of courses that match the search
+        let filteredCourses = courses;
 
         function displayCourses() {
             courseList.innerHTML = "";
+            courseCount.textContent = `${filteredCourses.length} courses available`;
 
-            courses.slice(0, visibleCourses).forEach(course => {
+            filteredCourses.slice(0, visibleCourses).forEach(course => {
                 const card = document.createElement("article");
                 card.className = "course-card";
 
@@ -58,7 +62,7 @@ async function loadCourses() {
 
             // Hide the button when all courses are visible
             if (loadMoreButton) {
-                loadMoreButton.hidden = visibleCourses >= courses.length;
+                loadMoreButton.hidden = visibleCourses >= filteredCourses.length;
             }
         }
 
@@ -68,6 +72,23 @@ async function loadCourses() {
                 displayCourses();
             });
         }
+
+        
+        // Filter courses as the user types
+        searchInput.addEventListener("input", () => {
+            const searchText = searchInput.value.toLowerCase().trim();
+
+            filteredCourses = courses.filter(course => {
+                return (
+                    course.title.toLowerCase().includes(searchText) ||
+                    course.description.toLowerCase().includes(searchText)
+                );
+            });
+
+            // Start from the first six matching courses
+            visibleCourses = 6;
+            displayCourses();
+        });
 
         displayCourses();
 
