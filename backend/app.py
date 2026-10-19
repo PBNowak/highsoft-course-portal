@@ -52,7 +52,30 @@ def get_courses():
             "level": "Advanced",
             "duration": "4 hours",
             "description": "Explore advanced techniques for creating interactive data visualisations."
+        },
+        {
+            "id": 7,
+            "title": "Building Interactive Dashboards",
+            "level": "Intermediate",
+            "duration": "3 hours",
+            "description": "Combine multiple charts to create interactive dashboards that present data clearly."
+        },
+        {
+            "id": 8,
+            "title": "Creating Responsive Charts",
+            "level": "Intermediate",
+            "duration": "2 hours",
+            "description": "Learn how to make charts adapt to different screen sizes and devices."
+        },
+        {
+            "id": 9,
+            "title": "Advanced Highcharts Features",
+            "level": "Advanced",
+            "duration": "4 hours",
+            "description": "Explore advanced chart options and techniques for more complex data visualisations."
         }
+
+
     ]
 
 
