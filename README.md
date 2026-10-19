@@ -20,3 +20,19 @@ docs/ – Project documentation
 
 The project is currently in the early development stage.
 We are preparing the technical structure before starting implementation.
+
+### Backend Development
+
+- Python virtual environment created.
+- Flask installed and configured.
+- Basic Flask application created and tested successfully.
+- First API endpoint (`/api/courses`) implemented.
+- API returns example course data in JSON format.
+- Backend dependencies saved in `backend/requirements.txt`.
+
+### Next Steps
+
+- Connect the frontend to the Flask API using JavaScript.
+- Implement the course overview and course detail pages.
+- Set up the SQLite database.
+- Add course progress tracking and basic admin functionality.
