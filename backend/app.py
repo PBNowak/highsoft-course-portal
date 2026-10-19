@@ -9,6 +9,7 @@ def home():
 
 @app.route("/api/courses")
 def get_courses():
+   
     courses = [
         {
             "id": 1,
@@ -21,8 +22,33 @@ def get_courses():
             "title": "JavaScript Fundamentals",
             "level": "Beginner",
             "duration": "3 hours"
+        },
+        {
+            "id": 3,
+            "title": "Creating Your First Line Chart",
+            "level": "Beginner",
+            "duration": "1 hour"
+        },
+        {
+            "id": 4,
+            "title": "Working with Chart Data",
+            "level": "Intermediate",
+            "duration": "2 hours"
+        },
+        {
+            "id": 5,
+            "title": "Customising Highcharts Charts",
+            "level": "Intermediate",
+            "duration": "3 hours"
+        },
+        {
+            "id": 6,
+            "title": "Advanced Data Visualisation",
+            "level": "Advanced",
+            "duration": "4 hours"
         }
     ]
+
 
     return jsonify(courses)
 
