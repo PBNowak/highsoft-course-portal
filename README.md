@@ -113,16 +113,22 @@ filtering, progress tracking, and database integration, is planned.
 - API returns example course data in JSON format.
 - Backend dependencies saved in `backend/requirements.txt`.
 
+
 ### Frontend Development
 
 - Initial Course Overview page created using HTML and CSS.
 - Navigation, course search field, and filter dropdowns added.
 - Course card layout implemented based on the Figma design.
 - JavaScript connected to the Flask API using fetch().
-- Course data retrieved from `/api/courses` and displayed dynamically.
+- Nine example courses retrieved from `/api/courses` and displayed dynamically.
+- Course cards display titles, difficulty levels, durations, and descriptions.
 - Course count updates automatically based on the returned data.
+- Functional "Load more" button implemented: six courses appear initially, with three additional courses revealed when clicked.
+- "View course" buttons added as placeholders for future Course Detail pages.
+- Footer added with navigation links and project information.
 - Search and filtering functionality are not yet implemented.
 - Responsive styling and further UI improvements are in progress.
+
   
 ### Next Steps
 
