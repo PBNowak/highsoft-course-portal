@@ -1,0 +1,122 @@
+/* Basic page styling */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "IBM Plex Sans", sans-serif;
+    background-color: #ffffff;
+    color: #222222;
+}
+
+/* Header */
+header {
+    padding: 20px 40px;
+    border-bottom: 1px solid #dddddd;
+}
+
+/* Main content */
+main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 24px;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+p {
+    line-height: 1.6;
+}
+
+/* Navigation bar */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+nav h2 {
+    margin: 0;
+    font-size: 22px;
+}
+
+nav ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: #222222;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Login button */
+.login-btn {
+    padding: 10px 24px;
+    border: 1px solid #222222;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+/* Course search */
+.course-search {
+    margin-top: 30px;
+    max-width: 600px;
+}
+
+.course-search label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.course-search input {
+    width: 100%;
+    padding: 14px 16px;
+    font-family: inherit;
+    font-size: 16px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+}
+
+.course-search input:focus {
+    outline: 2px solid #8087e8;
+    outline-offset: 2px;
+}
+
+/* Course filters */
+.course-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.course-filters select {
+    padding: 12px 16px;
+    min-width: 160px;
+    font-family: inherit;
+    font-size: 15px;
+    color: #222222;
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.course-filters select:focus {
+    outline: 2px solid #8087e8;
+    outline-offset: 2px;
+}
