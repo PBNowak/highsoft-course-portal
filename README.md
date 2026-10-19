@@ -8,3 +8,15 @@ Our project focuses on creating a clear and supportive learning experience, from
 frontend/ – Frontend development
 backend/ – Backend development
 docs/ – Project documentation
+
+## Tech Stack
+
+- Frontend: HTML, CSS and JavaScript
+- Backend: Python and Flask
+- Database: SQLite (proposed)
+- Version Control: Git and GitHub
+
+## Project Status
+
+The project is currently in the early development stage.
+We are preparing the technical structure before starting implementation.
