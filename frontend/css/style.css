@@ -66,6 +66,7 @@ main {
 /* --- Text --- */
 h1 {
     font-size: 36px;
+    margin-top: 64px;
     margin-bottom: 12px;
     color: var(--brand-deep);
 }
