@@ -128,10 +128,33 @@ header nav a:hover {
 
 /* --- Login button (header) --- */
 .login-btn {
-    padding: 10px 24px;
-    border: 1px solid #222222;
-    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 24px 6px 6px;   /* less on the left so the icon sits close to the edge */
+    background-color: var(--brand-deep);
+    color: #FFFFFF;
+    border-radius: 999px;        /* pill shape */
     font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.15s;
+}
+
+.login-btn:hover {
+    background-color: var(--brand);
+    text-decoration: none;       /* stops the nav-link underline */
+}
+
+/* --- Profile icon inside the login button --- */
+.login-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: #FFFFFF;
+    color: var(--brand-accent);  /* icon color */
 }
 
 /* --- "View course" button (cards) --- */
