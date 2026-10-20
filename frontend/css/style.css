@@ -84,6 +84,17 @@ main > p {
     margin-top: 0;
 }
 
+/* --- Utilities --- */
+/* Hides text visually but keeps it for screen readers */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
 
 /* ============================================================
    3. HEADER & NAV
@@ -193,55 +204,99 @@ header nav a:hover {
    5. SEARCH & FILTERS
    ============================================================ */
 
-/* --- Search field --- */
-.course-search {
+/* --- Toolbar: search + filters on one row --- */
+.course-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
     margin-top: 30px;
-    max-width: 600px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--muted);
 }
 
-.course-search label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: 600;
+/* --- Search field --- */
+.course-search {
+    position: relative;          /* lets the icon sit inside the field */
+    flex: 1 1 280px;
+    max-width: 360px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    color: var(--ink);
+    pointer-events: none;        /* clicks go through to the input */
 }
 
 .course-search input {
     width: 100%;
-    padding: 14px 16px;
+    padding: 12px 16px 12px 44px;   /* extra left space for the icon */
     font-family: inherit;
     font-size: 16px;
-    border: 1px solid #cccccc;
-    border-radius: 8px;
+    color: var(--ink);
+    background-color: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    transition: border-color 0.15s;
+}
+
+.course-search input:hover {
+    border-color: var(--brand);
 }
 
 .course-search input:focus {
-    outline: 2px solid #8087e8;
-    outline-offset: 2px;
+    border-color: var(--brand);
+    outline: 2px solid var(--brand-soft);
+    outline-offset: 1px;
 }
 
-/* --- Filter dropdowns --- */
+/* --- Filter dropdowns (pill shape) --- */
 .course-filters {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px;
-    margin-top: 24px;
+    gap: 12px;
 }
 
 .course-filters select {
-    padding: 12px 16px;
-    min-width: 160px;
+    appearance: none;            /* removes the browser's own arrow */
+    field-sizing: content;       /* width follows the selected text */
+    padding: 8px 36px 8px 16px;  /* extra right space for our arrow */
     font-family: inherit;
-    font-size: 15px;
-    color: #222222;
-    background-color: #ffffff;
-    border: 1px solid #cccccc;
-    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    background-color: var(--surface-card);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M0 0h10L5 6z' fill='%2318171C'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 10px 6px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
     cursor: pointer;
+    transition: border-color 0.15s, background-color 0.15s;
+}
+
+.course-filters select:hover {
+    background-color: var(--surface-page);   /* same light purple as the page */
+    border-color: var(--brand);
 }
 
 .course-filters select:focus {
-    outline: 2px solid #8087e8;
-    outline-offset: 2px;
+    border-color: var(--brand);
+    outline: 2px solid var(--brand-soft);
+    outline-offset: 1px;
+}
+
+/* Keep the open dropdown list white */
+.course-filters select option {
+    background-color: #FFFFFF;
+    color: var(--ink);
 }
 
 
