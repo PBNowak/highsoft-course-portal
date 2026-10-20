@@ -392,7 +392,7 @@ header nav a:hover {
 /* --- Grid --- */
 .course-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));  /* 3 across on wide screens, wraps on small */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));  /* 3 across on wide screens, wraps on small */
     gap: 24px;
     margin-top: 24px;
 }
