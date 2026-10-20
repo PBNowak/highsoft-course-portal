@@ -14,6 +14,7 @@ async function loadCourses() {
         const courseCount = document.getElementById("course-count");
         const loadMoreButton = document.getElementById("load-more-btn");
         const searchInput = document.getElementById("course-search");
+        const sortSelect = document.getElementById("course-sort");
 
         courseCount.textContent = `${courses.length} courses available`;
         courseList.innerHTML = "";
@@ -22,6 +23,19 @@ async function loadCourses() {
         let visibleCourses = 6;
         // Keep track of courses that match the search
         let filteredCourses = courses;
+        // Sort courses by duration (shortest first)
+
+function sortCourses() {
+    if (sortSelect.value === "shortest") {
+        filteredCourses.sort((a, b) => {
+            return parseFloat(a.duration) - parseFloat(b.duration);
+        });
+    } else {
+        // Restore the original order from the Flask API
+        filteredCourses.sort((a, b) => a.id - b.id);
+    }
+}
+
 
         function displayCourses() {
             courseList.innerHTML = "";
@@ -42,9 +56,8 @@ async function loadCourses() {
                 level.className = `course-level level-${course.level.toLowerCase()}`;
                 level.textContent = course.level;
 
-                const duration = document.createElement("p");
-                duration.textContent = `~ ${course.duration} course`;
-                duration.textContent = `~ ${course.duration}`;
+              const duration = document.createElement("p");
+duration.textContent = `~ ${course.duration}`;
 
                 // Badge + duration on one row
                 const meta = document.createElement("div");
@@ -91,11 +104,21 @@ async function loadCourses() {
                 );
             });
 
-            // Start from the first six matching courses
-            visibleCourses = 6;
-            displayCourses();
+            // Keep the selected sorting order when searching
+sortCourses();
+
+// Start from the first six matching courses
+visibleCourses = 6;
+displayCourses();
         });
 
+        // Update courses when the sorting option changes
+sortSelect.addEventListener("change", () => {
+    filteredCourses = [...filteredCourses];
+    sortCourses();
+    visibleCourses = 6;
+    displayCourses();
+});
         displayCourses();
 
     } catch (error) {

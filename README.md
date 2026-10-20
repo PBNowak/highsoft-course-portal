@@ -127,7 +127,11 @@ filtering, progress tracking, and database integration, is planned.
 - "View course" buttons added as placeholders for future Course Detail pages.
 - Footer added with navigation links and project information.
 - Live course search implemented using JavaScript, allowing users to search course titles and descriptions.
-- Course count and Load more button update automatically based on search results. Filter dropdowns are not yet functional.
+- - Course sorting implemented using JavaScript, allowing users to switch between default course order and shortest duration first.
+- Course count and Load more button update automatically based on search results.
+- Search, sorting and Load more work together.
+- Filter dropdowns are not yet functional.
+- Course Overview styling updated with Highsoft branding, improved navigation, difficulty badges and responsive course cards.
 - Responsive styling and further UI improvements are in progress.
 
   
