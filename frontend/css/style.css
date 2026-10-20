@@ -182,20 +182,26 @@ header nav a:hover {
 
 /* --- "View course" button (cards) --- */
 .course-button {
-    background-color: #4A55C9;
+    align-self: center;          /* centered, hugs its text */
+    margin-top: auto;            /* pushes the button to the bottom of the card */
+    padding: 8px 24px;
+    background-color: var(--brand);
     color: #FFFFFF;
     border: none;
-    border-radius: 6px;
-    padding: 12px 20px;
-    font-family: "IBM Plex Sans", sans-serif;
+    border-radius: 4px;
+    font-family: inherit;
     font-size: 14px;
     font-weight: 600;
-    width: 100%;
-    margin-top: 16px;
+    cursor: pointer;
+    transition: background-color 0.15s;
 }
 
+.course-button:hover:not(:disabled) {
+    background-color: var(--brand-hover);
+}
+
+/* Disabled until course pages exist ("coming soon") */
 .course-button:disabled {
-    opacity: 1;
     cursor: not-allowed;
 }
 
@@ -335,12 +341,14 @@ header nav a:hover {
     border-radius: 4px;
     padding: 16px;
     text-align: left;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    display: flex;
+    flex-direction: column;      /* stacks content so the button can sit at the bottom */
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
 .course-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(42, 47, 102, 0.12);
+    transform: translateY(-1px);                     /* barely lifts */
+    box-shadow: 0 4px 12px rgba(42, 47, 102, 0.06);  
     border-color: var(--brand-accent);
 }
 
@@ -399,7 +407,7 @@ header nav a:hover {
 }
 
 .course-description {
-    margin: 0;
+    margin: 0 0 16px;
     font-size: 14px;
 }
 
