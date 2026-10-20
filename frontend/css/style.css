@@ -207,6 +207,33 @@ header nav a:hover {
 }
 
 
+/* --- "Load more" button (below the grid) --- */
+.load-more-btn {
+    display: block;
+    margin: 32px auto 0;         /* centered under the cards */
+    width: clamp(200px, 30%, 360px);   /* 30% of the content width, but never under 200px or over 360px */
+    padding: 10px 16px;
+    background-color: var(--surface-card);
+    color: var(--brand);
+    border: 1px solid var(--brand);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.load-more-btn:hover {
+    background-color: var(--surface-page);
+}
+
+/* Keep it hidden when JS sets the hidden attribute */
+.load-more-btn[hidden] {
+    display: none;
+}
+
+
 /* ============================================================
    5. SEARCH & FILTERS
    ============================================================ */
