@@ -134,6 +134,19 @@ filtering, progress tracking, and database integration, is planned.
 - Course Overview styling updated with Highsoft branding, improved navigation, difficulty badges and responsive course cards.
 - Responsive styling and further UI improvements are in progress.
 
+### Course Filtering
+
+The Course Overview page includes functional filters for:
+
+- Course level (Beginner, Intermediate, Advanced)
+- Duration (1 hour or less, 1–3 hours, over 3 hours)
+- Topic (Highcharts, JavaScript)
+- Chart type (Line, Bar, Pie)
+
+The filters work together with live search, course sorting, and the Load more button. The displayed course count updates automatically based on the selected filters.
+
+The Flask API currently provides nine sample courses. Chart types are stored in the course data, with one Line chart course currently available. Bar and Pie chart courses have not yet been added. Topic filtering currently uses course titles and descriptions.
+
   
 ### Next Steps
 

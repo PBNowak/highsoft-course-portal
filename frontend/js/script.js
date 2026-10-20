@@ -15,6 +15,10 @@ async function loadCourses() {
         const loadMoreButton = document.getElementById("load-more-btn");
         const searchInput = document.getElementById("course-search");
         const sortSelect = document.getElementById("course-sort");
+        const levelFilter = document.getElementById("level-filter");
+        const durationFilter = document.getElementById("duration-filter");
+        const topicFilter = document.getElementById("topic-filter");
+        const chartTypeFilter = document.getElementById("chart-type-filter");
 
         courseCount.textContent = `${courses.length} courses available`;
         courseList.innerHTML = "";
@@ -98,11 +102,33 @@ duration.textContent = `~ ${course.duration}`;
             const searchText = searchInput.value.toLowerCase().trim();
 
             filteredCourses = courses.filter(course => {
-                return (
-                    course.title.toLowerCase().includes(searchText) ||
-                    course.description.toLowerCase().includes(searchText)
-                );
-            });
+    const matchesSearch =
+        course.title.toLowerCase().includes(searchText) ||
+        course.description.toLowerCase().includes(searchText);
+
+    const matchesLevel =
+    levelFilter.value === "" ||
+    course.level.toLowerCase() === levelFilter.value;
+
+const hours = parseFloat(course.duration);
+
+const matchesDuration =
+    durationFilter.value === "" ||
+    (durationFilter.value === "short" && hours <= 1) ||
+    (durationFilter.value === "medium" && hours >= 1 && hours <= 3) ||
+    (durationFilter.value === "long" && hours > 3);
+
+const matchesTopic =
+    topicFilter.value === "" ||
+    course.title.toLowerCase().includes(topicFilter.value) ||
+    course.description.toLowerCase().includes(topicFilter.value);
+
+const matchesChartType =
+    chartTypeFilter.value === "" ||
+    course.chart_type === chartTypeFilter.value;
+
+return matchesSearch && matchesLevel && matchesDuration && matchesTopic && matchesChartType;
+});
 
             // Keep the selected sorting order when searching
 sortCourses();
@@ -118,6 +144,26 @@ sortSelect.addEventListener("change", () => {
     sortCourses();
     visibleCourses = 6;
     displayCourses();
+});
+
+// Update courses when the level filter changes
+levelFilter.addEventListener("change", () => {
+    searchInput.dispatchEvent(new Event("input"));
+});
+
+// Update courses when the duration filter changes
+durationFilter.addEventListener("change", () => {
+    searchInput.dispatchEvent(new Event("input"));
+});
+
+// Update courses when the topic filter changes
+topicFilter.addEventListener("change", () => {
+    searchInput.dispatchEvent(new Event("input"));
+});
+
+// Update courses when the chart type filter changes
+chartTypeFilter.addEventListener("change", () => {
+    searchInput.dispatchEvent(new Event("input"));
 });
         displayCourses();
 

@@ -16,6 +16,7 @@ def get_courses():
     "title": "Introduction to Highcharts",
     "level": "Beginner",
     "duration": "2 hours",
+    "chart_type": None,
     "description": "Learn the basics of Highcharts and create your first interactive chart."
 },
         {
@@ -23,20 +24,23 @@ def get_courses():
             "title": "JavaScript Fundamentals",
             "level": "Beginner",
             "duration": "3 hours",
+            "chart_type": None,
             "description": "Learn essential JavaScript skills for building interactive websites."
         },
         {
-            "id": 3,
-            "title": "Creating Your First Line Chart",
-            "level": "Beginner",
-            "duration": "1 hour",
-            "description": "Create a line chart and learn how to display data clearly."
-        },
+    "id": 3,
+    "title": "Creating Your First Line Chart",
+    "level": "Beginner",
+    "duration": "1 hour",
+    "chart_type": "line",
+    "description": "Create a line chart and learn how to display data clearly."
+},
         {
             "id": 4,
             "title": "Working with Chart Data",
             "level": "Intermediate",
             "duration": "2 hours",
+            "chart_type": None,
             "description": "Explore how to organize and update data in your charts."
         },
         {
@@ -44,6 +48,7 @@ def get_courses():
             "title": "Customising Highcharts Charts",
             "level": "Intermediate",
             "duration": "3 hours",
+            "chart_type": None,
             "description": "Make your charts stand out with colours, labels and custom settings."
         },
         {
@@ -51,6 +56,7 @@ def get_courses():
             "title": "Advanced Data Visualisation",
             "level": "Advanced",
             "duration": "4 hours",
+            "chart_type": None,
             "description": "Explore advanced techniques for creating interactive data visualisations."
         },
         {
@@ -58,6 +64,7 @@ def get_courses():
             "title": "Building Interactive Dashboards",
             "level": "Intermediate",
             "duration": "3 hours",
+            "chart_type": None,
             "description": "Combine multiple charts to create interactive dashboards that present data clearly."
         },
         {
@@ -65,6 +72,7 @@ def get_courses():
             "title": "Creating Responsive Charts",
             "level": "Intermediate",
             "duration": "2 hours",
+            "chart_type": None,
             "description": "Learn how to make charts adapt to different screen sizes and devices."
         },
         {
@@ -72,6 +80,7 @@ def get_courses():
             "title": "Advanced Highcharts Features",
             "level": "Advanced",
             "duration": "4 hours",
+            "chart_type": None,
             "description": "Explore advanced chart options and techniques for more complex data visualisations."
         }
 
