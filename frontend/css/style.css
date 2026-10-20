@@ -80,36 +80,44 @@ p {
 /* --- Header bar --- */
 header {
     padding: 20px 40px;
-    border-bottom: 1px solid #dddddd;
+    background-color: var(--muted);
+    border-bottom: 1px solid var(--border);
 }
 
-/* --- Navigation --- */
-nav {
+/* --- Navigation (header only, so the footer nav isn't affected) --- */
+header nav {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 30px;
+    flex-wrap: wrap;
 }
 
-nav h2 {
-    margin: 0;
-    font-size: 22px;
+/* --- Logo --- */
+.nav-logo {
+    display: inline-flex;
+    align-items: center;
 }
 
-nav ul {
+.nav-logo img {
+    height: clamp(28px, 4vw, 36px);   /* scales a little with screen width */
+    width: auto;
+}
+
+/* --- Links --- */
+header nav ul {
     display: flex;
     gap: 30px;
     list-style: none;
-    margin: 0;
+    margin: 0 0 0 auto;   /* auto pushes the links to the right */
     padding: 0;
 }
 
-nav a {
+header nav a {
     text-decoration: none;
-    color: #222222;
+    color: var(--brand-soft);
 }
 
-nav a:hover {
+header nav a:hover {
     text-decoration: underline;
 }
 
