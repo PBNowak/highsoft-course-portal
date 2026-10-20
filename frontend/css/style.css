@@ -304,45 +304,66 @@ header nav a:hover {
    6. COURSE CARDS
    ============================================================ */
 
+/* --- Results header: heading + course count --- */
+.results-header {
+    margin-top: 30px;
+}
+
+.results-header h2 {
+    text-align: center;
+    color: var(--brand-deep);
+    margin-bottom: 8px;
+}
+
+#course-count {
+    color: var(--muted);
+    margin: 0;
+}
+
 /* --- Grid --- */
 .course-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));  /* 3 across on wide screens, wraps on small */
     gap: 24px;
     margin-top: 24px;
 }
 
 /* --- Card --- */
 .course-card {
-    background-color: white;
-    border: 1px solid #d5d5df;
+    background-color: var(--surface-card);
+    border: 1px solid var(--border);
     border-radius: 4px;
-    padding: 20px;
-    overflow: hidden;
+    padding: 16px;
+    text-align: left;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
-/* --- Image placeholder --- */
+.course-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(42, 47, 102, 0.12);
+    border-color: var(--brand-accent);
+}
+
+/* --- Image placeholder (sits inside the card padding) --- */
 .course-image {
-    width: calc(100% + 40px);
-    height: 160px;
-    margin: -20px -20px 16px;
-    background-color: #f0f1f8;
-    border: 1px solid #d5d5df;
+    width: 100%;
+    height: 180px;
+    margin-bottom: 16px;
+    background-color: var(--surface-band);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #888;
+    color: var(--muted);
     font-size: 14px;
-    margin-bottom: 16px;
 }
 
 /* --- Level badge --- */
 .course-level {
     display: inline-block;
-    background-color: #d9f5e8;
-    color: #247a53;
-    padding: 5px 12px;
-    border-radius: 12px;
+    background-color: var(--success-bg);
+    color: var(--success-ink);
+    padding: 4px 12px;
+    border-radius: 999px;
     font-size: 12px;
     font-weight: 600;
     margin-bottom: 10px;
