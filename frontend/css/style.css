@@ -357,16 +357,50 @@ header nav a:hover {
     font-size: 14px;
 }
 
-/* --- Level badge --- */
+/* --- Meta row: level badge left, duration right --- */
+.course-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.course-duration {
+    margin: 0;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* --- Level badge (color per level) --- */
 .course-level {
     display: inline-block;
-    background-color: var(--success-bg);
-    color: var(--success-ink);
-    padding: 4px 12px;
+    padding: 4px 24px;
     border-radius: 999px;
     font-size: 12px;
     font-weight: 600;
-    margin-bottom: 10px;
+    background-color: var(--success-bg);
+    color: var(--success-ink);
+}
+
+.level-intermediate {
+    background-color: var(--attention-bg);
+    color: var(--attention-ink);
+}
+
+.level-advanced {
+    background-color: var(--danger-bg);
+    color: var(--danger-ink);
+}
+
+/* --- Title + description --- */
+.course-card h3 {
+    margin: 0 0 8px;
+    font-size: 18px;
+}
+
+.course-description {
+    margin: 0;
+    font-size: 14px;
 }
 
 

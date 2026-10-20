@@ -38,12 +38,18 @@ async function loadCourses() {
                 const title = document.createElement("h3");
                 title.textContent = course.title;
 
-                const level = document.createElement("span");
-                level.className = "course-level";
+                               const level = document.createElement("span");
+                level.className = `course-level level-${course.level.toLowerCase()}`;
                 level.textContent = course.level;
 
                 const duration = document.createElement("p");
-                duration.textContent = `Duration: ${course.duration}`;
+                duration.textContent = `~ ${course.duration} course`;
+                duration.textContent = `~ ${course.duration}`;
+
+                // Badge + duration on one row
+                const meta = document.createElement("div");
+                meta.className = "course-meta";
+                meta.append(level, duration);
 
                 const description = document.createElement("p");
                 description.className = "course-description";
@@ -56,7 +62,7 @@ async function loadCourses() {
                 button.disabled = true;
                 button.title = "Course details coming soon";
 
-                card.append(image, title, level, duration, description, button);
+                card.append(image, meta, title, description, button);
                 courseList.appendChild(card);
             });
 
