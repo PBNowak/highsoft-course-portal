@@ -51,13 +51,13 @@
 body {
     margin: 0;
     font-family: "IBM Plex Sans", sans-serif;
-    background-color: #ffffff;
-    color: #222222;
+    background-color: var(--surface-page);
+    color: var(--ink);
 }
 
 /* --- Main layout --- */
 main {
-    max-width: 1200px;
+    max-width: 1080px;
     margin: 40px auto;
     padding: 0 24px;
 }
@@ -66,10 +66,22 @@ main {
 h1 {
     font-size: 36px;
     margin-bottom: 12px;
+    color: var(--brand-deep);
 }
 
 p {
     line-height: 1.6;
+}
+
+/* --- Page intro (heading + text right under it) --- */
+main > h1,
+main > p {
+    text-align: center;
+}
+
+main > p {
+    color: var(--muted);
+    margin-top: 0;
 }
 
 
