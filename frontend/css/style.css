@@ -185,9 +185,9 @@ header nav a:hover {
     align-self: center;          /* centered, hugs its text */
     margin-top: auto;            /* pushes the button to the bottom of the card */
     padding: 8px 24px;
-    background-color: var(--brand);
-    color: #FFFFFF;
-    border: none;
+    background-color: var(--brand-soft);
+    color: var(--brand);
+    border: 1px solid var(--brand);
     border-radius: 4px;
     font-family: inherit;
     font-size: 14px;
