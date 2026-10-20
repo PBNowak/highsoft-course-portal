@@ -1,8 +1,25 @@
-/* Basic page styling */
+/* ============================================================
+   HIGHSOFT COURSE PORTAL — STYLES
+   Contents:
+     1. BASE (reset, body, layout, text)
+     2. HEADER & NAV
+     3. BUTTONS
+     4. SEARCH & FILTERS
+     5. COURSE CARDS
+     6. FOOTER
+   ============================================================ */
+
+
+/* ============================================================
+   1. BASE
+   ============================================================ */
+
+/* --- Reset --- */
 * {
     box-sizing: border-box;
 }
 
+/* --- Page --- */
 body {
     margin: 0;
     font-family: "IBM Plex Sans", sans-serif;
@@ -10,19 +27,14 @@ body {
     color: #222222;
 }
 
-/* Header */
-header {
-    padding: 20px 40px;
-    border-bottom: 1px solid #dddddd;
-}
-
-/* Main content */
+/* --- Main layout --- */
 main {
     max-width: 1200px;
     margin: 40px auto;
     padding: 0 24px;
 }
 
+/* --- Text --- */
 h1 {
     font-size: 36px;
     margin-bottom: 12px;
@@ -32,7 +44,18 @@ p {
     line-height: 1.6;
 }
 
-/* Navigation bar */
+
+/* ============================================================
+   2. HEADER & NAV
+   ============================================================ */
+
+/* --- Header bar --- */
+header {
+    padding: 20px 40px;
+    border-bottom: 1px solid #dddddd;
+}
+
+/* --- Navigation --- */
 nav {
     display: flex;
     align-items: center;
@@ -62,7 +85,12 @@ nav a:hover {
     text-decoration: underline;
 }
 
-/* Login button */
+
+/* ============================================================
+   3. BUTTONS
+   ============================================================ */
+
+/* --- Login button (header) --- */
 .login-btn {
     padding: 10px 24px;
     border: 1px solid #222222;
@@ -70,7 +98,31 @@ nav a:hover {
     font-weight: 600;
 }
 
-/* Course search */
+/* --- "View course" button (cards) --- */
+.course-button {
+    background-color: #4A55C9;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 20px;
+    font-family: "IBM Plex Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    width: 100%;
+    margin-top: 16px;
+}
+
+.course-button:disabled {
+    opacity: 1;
+    cursor: not-allowed;
+}
+
+
+/* ============================================================
+   4. SEARCH & FILTERS
+   ============================================================ */
+
+/* --- Search field --- */
 .course-search {
     margin-top: 30px;
     max-width: 600px;
@@ -96,7 +148,7 @@ nav a:hover {
     outline-offset: 2px;
 }
 
-/* Course filters */
+/* --- Filter dropdowns --- */
 .course-filters {
     display: flex;
     flex-wrap: wrap;
@@ -121,6 +173,12 @@ nav a:hover {
     outline-offset: 2px;
 }
 
+
+/* ============================================================
+   5. COURSE CARDS
+   ============================================================ */
+
+/* --- Grid --- */
 .course-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -128,6 +186,7 @@ nav a:hover {
     margin-top: 24px;
 }
 
+/* --- Card --- */
 .course-card {
     background-color: white;
     border: 1px solid #d5d5df;
@@ -136,6 +195,7 @@ nav a:hover {
     overflow: hidden;
 }
 
+/* --- Image placeholder --- */
 .course-image {
     width: calc(100% + 40px);
     height: 160px;
@@ -150,6 +210,7 @@ nav a:hover {
     margin-bottom: 16px;
 }
 
+/* --- Level badge --- */
 .course-level {
     display: inline-block;
     background-color: #d9f5e8;
@@ -162,27 +223,11 @@ nav a:hover {
 }
 
 
-.course-button {
-    background-color: #4A55C9;
-    color: #FFFFFF;
-    border: none;
-    border-radius: 6px;
-    padding: 12px 20px;
-    font-family: "IBM Plex Sans", sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    width: 100%;
-    margin-top: 16px;
-}
+/* ============================================================
+   6. FOOTER
+   ============================================================ */
 
-.course-button:disabled {
-    opacity: 1;
-    cursor: not-allowed;
-}
-
-
-/* Footer */
-
+/* --- Footer bar --- */
 .site-footer {
     background-color: #30426B;
     color: #FFFFFF;
@@ -190,6 +235,7 @@ nav a:hover {
     margin-top: 60px;
 }
 
+/* --- Top row: brand + links --- */
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
@@ -222,6 +268,7 @@ nav a:hover {
     text-decoration: underline;
 }
 
+/* --- Bottom row: copyright --- */
 .footer-bottom {
     max-width: 1200px;
     margin: 30px auto 0;
@@ -230,6 +277,7 @@ nav a:hover {
     font-size: 13px;
 }
 
+/* --- Mobile --- */
 @media (max-width: 600px) {
     .footer-content {
         flex-direction: column;
