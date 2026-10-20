@@ -1,17 +1,45 @@
 /* ============================================================
    HIGHSOFT COURSE PORTAL — STYLES
    Contents:
-     1. BASE (reset, body, layout, text)
-     2. HEADER & NAV
-     3. BUTTONS
-     4. SEARCH & FILTERS
-     5. COURSE CARDS
-     6. FOOTER
+     1. COLORS (design tokens)
+     2. BASE (reset, body, layout, text)
+     3. HEADER & NAV
+     4. BUTTONS
+     5. SEARCH & FILTERS
+     6. COURSE CARDS
+     7. FOOTER
    ============================================================ */
 
 
 /* ============================================================
-   1. BASE
+   1. COLORS  (built on the Highcharts brand kit)
+   ============================================================ */
+:root {
+    /* --- Surfaces --- */
+    --surface-page: #F0F1FF;   /* Brand 100 — page background */
+    --surface-card: #FFFFFF;   /* Neutral 0 — cards */
+    --surface-band: #E1E3FF;   /* Brand 200 — bands / image box */
+
+    /* --- Text --- */
+    --ink:    #18171C;   /* Neutral 900 — body text */
+    --muted:  #5E5C70;   /* Neutral 600 — muted text */
+    --border: #E3E3E8;   /* Neutral 100 — borders */
+
+    /* --- Purple (actions) --- */
+    --brand:        #4A55C9;  /* Brand 700 — primary button */
+    --brand-hover:  #3F4699;  /* Brand 800 — hover */
+    --brand-soft:   #F0F1FF;  /* Brand 100 — soft fill */
+    --brand-accent: #6268D0;  /* Brand 600 — links, hover, focus */
+    --brand-deep:   #2A2F66;  /* Brand 900 — headings, login */
+
+    /* --- Status (light fill + dark ink) --- */
+    --success-bg:   #D1FAE5;  --success-ink:   #047857;
+    --attention-bg: #FEF3C7;  --attention-ink: #B45309;
+    --danger-bg:    #FEE2E2;  --danger-ink:    #B91C1C;
+}
+
+/* ============================================================
+   2. BASE
    ============================================================ */
 
 /* --- Reset --- */
@@ -46,7 +74,7 @@ p {
 
 
 /* ============================================================
-   2. HEADER & NAV
+   3. HEADER & NAV
    ============================================================ */
 
 /* --- Header bar --- */
@@ -87,7 +115,7 @@ nav a:hover {
 
 
 /* ============================================================
-   3. BUTTONS
+   4. BUTTONS
    ============================================================ */
 
 /* --- Login button (header) --- */
@@ -119,7 +147,7 @@ nav a:hover {
 
 
 /* ============================================================
-   4. SEARCH & FILTERS
+   5. SEARCH & FILTERS
    ============================================================ */
 
 /* --- Search field --- */
@@ -175,7 +203,7 @@ nav a:hover {
 
 
 /* ============================================================
-   5. COURSE CARDS
+   6. COURSE CARDS
    ============================================================ */
 
 /* --- Grid --- */
@@ -224,7 +252,7 @@ nav a:hover {
 
 
 /* ============================================================
-   6. FOOTER
+   7. FOOTER
    ============================================================ */
 
 /* --- Footer bar --- */
