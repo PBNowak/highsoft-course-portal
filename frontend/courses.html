@@ -91,7 +91,16 @@
 
     <div class="results-header">
         <h2>Explore courses</h2>
-        <p id="course-count">Loading courses...</p>
+        <div class="results-bar">
+            <p id="course-count">Loading courses...</p>
+
+            <label for="course-sort" class="visually-hidden">Sort courses</label>
+            <select id="course-sort" class="course-sort">
+                <option value="popular">Sort: most popular</option>
+                <option value="newest">Sort: newest</option>
+                <option value="shortest">Sort: shortest first</option>
+            </select>
+        </div>
     </div>
 
     <div id="course-list" class="course-grid">

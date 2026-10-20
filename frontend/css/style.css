@@ -297,7 +297,8 @@ header nav a:hover {
     gap: 12px;
 }
 
-.course-filters select {
+.course-filters select,
+.course-sort {
     appearance: none;            /* removes the browser's own arrow */
     field-sizing: content;       /* width follows the selected text */
     padding: 8px 36px 8px 16px;  /* extra right space for our arrow */
@@ -316,12 +317,14 @@ header nav a:hover {
     transition: border-color 0.15s, background-color 0.15s;
 }
 
-.course-filters select:hover {
+.course-filters select:hover,
+.course-sort:hover {
     background-color: var(--surface-page);   /* same light purple as the page */
     border-color: var(--brand);
 }
 
-.course-filters select:focus {
+.course-filters select:focus,
+.course-sort:focus {
     border-color: var(--brand);
     outline: 2px solid var(--brand-soft);
     outline-offset: 1px;
@@ -352,6 +355,15 @@ header nav a:hover {
 #course-count {
     color: var(--muted);
     margin: 0;
+}
+
+/* --- Results bar: course count left, sort right --- */
+.results-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
 }
 
 /* --- Grid --- */
