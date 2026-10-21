@@ -22,7 +22,7 @@ The application uses a frontend and backend architecture.
 
 - **Frontend:** HTML and CSS provide the user interface, while JavaScript handles interactions and requests data from the backend.
 - **Backend:** Python and Flask handle API requests and provide course information in JSON format.
-- **Database:** SQLite is implemented for storing course information. Database support for lessons, enrolments, and learner progress is planned.
+- **Database:** SQLite stores course information and lessons. Each lesson is linked to a course using a course ID. Database support for enrolments and learner progress is planned.
 
 ### Current Data Flow
 
@@ -83,6 +83,7 @@ The backend currently provides:
 
 - `GET /api/courses` — returns example course data in JSON format.
 - `GET /api/courses/<int:course_id>` — returns the details of a specific course from SQLite using its ID.
+- `GET /api/courses/<int:course_id>/lessons` — returns all lessons belonging to a specific course from SQLite in JSON format.
 
 The API can be tested at:
 
@@ -122,8 +123,8 @@ The project now uses SQLite to store course information.
 
 Database files:
 - `backend/database.py` — database connection and setup functions.
-- `backend/schema.sql` — defines the courses table.
-- `backend/seed.sql` — contains nine sample courses.
+- `backend/schema.sql` — defines the courses and lessons tables.
+- `backend/seed.sql` — contains nine sample courses and five sample lessons for Introduction to Highcharts.
 
 To set up the database, run these commands from the project root:
 
@@ -131,6 +132,9 @@ To set up the database, run these commands from the project root:
 python -c "from backend.database import init_db; init_db()"
 python -c "from backend.database import seed_db; seed_db()"
 ```
+**Note for collaborators:** After pulling updates that change `schema.sql` or `seed.sql`, run both database setup commands again. This creates any new tables and inserts new sample data without duplicating existing records.
+
+The SQLite database file is stored locally and is not shared through GitHub. Each developer must update their own database.
 
 The database is stored locally in `backend/courses.db` and is excluded from GitHub using `.gitignore`.
 
@@ -177,13 +181,30 @@ The Flask API currently provides nine sample courses. Chart types are stored in 
 - The Course Detail page displays the course title, level, duration, and description.
 - Users can return to the Course Overview page using the "Back to courses" link.
 - All nine sample courses have been tested successfully.
+- The page includes sections for learning outcomes, course information, and course content.
+- Lessons are retrieved dynamically from SQLite through the Flask API.
+- The first course, Introduction to Highcharts, currently contains five sample lessons.
+- Lesson titles and durations are displayed in a numbered list.
+- The lesson count updates automatically based on the selected course.
+- Courses without lessons display a "Lessons coming soon" message.
+- The Start course button is present but remains disabled until lesson navigation is implemented.
 
-  
+ ### Lesson Page
+
+- A new `frontend/lesson.html` page has been created based on the low-fidelity wireframe.
+- The basic HTML structure includes lesson navigation, a progress indicator, lesson content, a chart example area, a practice section, and help.
+- Previous and Next buttons are included but currently disabled.
+- The page is not yet connected to the Flask API or SQLite database.
+- Dynamic lesson content, interactive exercises, and progress tracking will be implemented in future development.
+   
 ### Next Steps
 
-- Complete the Course Overview page styling based on the Figma design.
-- Create lesson pages and lesson content.
-- Extend the SQLite database to support lessons, enrolments, and learner progress.
+- Complete the Course Overview and Course Detail page styling based on the Figma designs.
+- Connect the Lesson page to the Flask API and SQLite database.
+- Display dynamic lesson content and implement Previous/Next lesson navigation.
+- Add learning outcomes and prerequisites for individual courses.
+- Develop interactive lesson exercises and chart examples using Highcharts.
+- Extend SQLite to support enrolments and learner progress.
 - Implement lesson completion and learner progress tracking.
 - Use Highcharts to visualise learner progress.
 - Explore basic admin functionality for managing courses.
