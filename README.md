@@ -82,6 +82,7 @@ This separation allows the frontend to display course information without having
 The backend currently provides:
 
 - `GET /api/courses` — returns example course data in JSON format.
+- `GET /api/courses/<int:course_id>` — returns the details of a specific course from SQLite using its ID.
 
 The API can be tested at:
 
@@ -102,7 +103,9 @@ Live search, course filtering, sorting, course counts, and Load more functionali
 
 The interface is being styled based on our high-fidelity Figma designs.
 
-Future development will focus on course details, lessons, enrolment, learner progress tracking, and basic administration functionality.
+The Course Detail page is now implemented and connected to the Flask API and SQLite database. Users can open individual courses and return to the Course Overview page.
+
+Future development will focus on lessons, enrolment, learner progress tracking, and basic administration functionality.
 
 ### Backend Development
 
@@ -144,7 +147,7 @@ The Flask `/api/courses` endpoint now retrieves course information from SQLite i
 - Course cards display titles, difficulty levels, durations, and descriptions.
 - Course count updates automatically based on the returned data.
 - Functional "Load more" button implemented: six courses appear initially, with three additional courses revealed when clicked.
-- "View course" buttons added as placeholders for future Course Detail pages.
+- "View course" buttons are fully functional and open the correct Course Detail page using the selected course ID.
 - Footer added with navigation links and project information.
 - Live course search implemented using JavaScript, allowing users to search course titles and descriptions.
 - Course sorting implemented using JavaScript, allowing users to switch between default course order and shortest duration first.
@@ -166,11 +169,19 @@ The filters work together with live search, course sorting, and the Load more bu
 
 The Flask API currently provides nine sample courses. Chart types are stored in the course data, with one Line chart course currently available. Bar and Pie chart courses have not yet been added. Topic filtering currently uses course titles and descriptions.
 
+### Course Detail Page
+
+- Users can click "View course" on the Course Overview page.
+- Each course opens its own details using a course ID in the URL.
+- Course information is retrieved dynamically from the Flask API and SQLite database.
+- The Course Detail page displays the course title, level, duration, and description.
+- Users can return to the Course Overview page using the "Back to courses" link.
+- All nine sample courses have been tested successfully.
+
   
 ### Next Steps
 
 - Complete the Course Overview page styling based on the Figma design.
-- Develop the Course Detail page and connect the "View course" buttons.
 - Create lesson pages and lesson content.
 - Extend the SQLite database to support lessons, enrolments, and learner progress.
 - Implement lesson completion and learner progress tracking.
