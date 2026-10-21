@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson | Highsoft Course Portal</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <main class="lesson-page">
+
+        <!-- Back navigation and progress -->
+        <section class="lesson-header">
+            <a href="courses.html" class="back-link">← Back to course</a>
+            <p id="lesson-number">Lesson 1 of 5</p>
+            <progress id="lesson-progress" value="0" max="100"></progress>
+        </section>
+
+        <div class="lesson-layout">
+
+            <!-- Lesson sidebar -->
+            <aside class="lesson-sidebar">
+                <h2>Course lessons</h2>
+                <ol id="lesson-navigation"></ol>
+            </aside>
+
+            <!-- Main lesson content -->
+            <article class="lesson-main">
+
+                <h1 id="lesson-title">Lesson title</h1>
+
+                <section class="lesson-content">
+                    <h2>Lesson content</h2>
+                    <p id="lesson-text"></p>
+                </section>
+
+                <!-- Chart example -->
+                <section class="lesson-example">
+                    <h2>Chart example</h2>
+                    <div id="chart-example"></div>
+                </section>
+
+                <!-- Practice area -->
+                <section class="lesson-practice">
+                    <h2>Practice</h2>
+                    <div id="practice-content"></div>
+                </section>
+
+                <!-- Help -->
+                <section class="lesson-help">
+                    <h2>Need help?</h2>
+                    <div id="lesson-help-content"></div>
+                </section>
+
+                <!-- Lesson navigation -->
+                <nav class="lesson-buttons" aria-label="Lesson navigation">
+                    <button type="button" id="previous-lesson" disabled>
+                        ← Previous
+                    </button>
+
+                    <button type="button" id="next-lesson" disabled>
+                        Next →
+                    </button>
+                </nav>
+
+            </article>
+        </div>
+
+    </main>
+
+</body>
+</html>
