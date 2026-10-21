@@ -10,11 +10,41 @@
 
     <main>
         <a href="courses.html" class="back-link">← Back to courses</a>
-    <h1 id="course-title">Loading course...</h1>
+    <div class="course-detail-image">
+    <img
+        src="https://placehold.co/400x300?text=Course+Image"
+        alt=""
+    >
+</div>
+        <h1 id="course-title">Loading course...</h1>
 
     <p id="course-level"></p>
     <p id="course-duration"></p>
-    <p id="course-description"></p>
+    <section class="course-learning">
+    <h2>What you'll learn</h2>
+    <ul id="learning-outcomes">
+    </ul>
+</section>
+<section class="course-about">
+    <h2>About this course</h2>
+    <p id="course-about-text"></p>
+</section>
+<section class="course-content">
+    <h2>Course content</h2>
+
+    <ol id="lesson-list">
+    </ol>
+    <p id="lessons-status">Lessons coming soon.</p>
+</section>
+<div class="course-actions">
+    <button
+        type="button"
+        id="start-course-btn"
+        disabled
+    >
+        Start course
+    </button>
+</div>
 </main>
 
 <script src="js/course-detail.js"></script>

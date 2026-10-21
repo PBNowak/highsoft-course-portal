@@ -6,3 +6,11 @@ CREATE TABLE IF NOT EXISTS courses (
     chart_type TEXT,
     description TEXT NOT NULL
 );
+CREATE TABLE IF NOT EXISTS lessons (
+    id INTEGER PRIMARY KEY,
+    course_id INTEGER NOT NULL,
+    title TEXT NOT NULL,
+    duration TEXT NOT NULL,
+    content TEXT NOT NULL,
+    FOREIGN KEY (course_id) REFERENCES courses(id)
+);

@@ -22,7 +22,7 @@ async function loadCourseDetails() {
 document.getElementById("course-title").textContent = course.title;
 document.getElementById("course-level").textContent = `Level: ${course.level}`;
 document.getElementById("course-duration").textContent = `Duration: ${course.duration}`;
-document.getElementById("course-description").textContent = course.description;
+document.getElementById("course-about-text").textContent = course.description;
 
     } catch (error) {
         console.error("Could not load course:", error);
