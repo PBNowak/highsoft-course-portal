@@ -37,5 +37,18 @@ def get_course(course_id):
 
     return jsonify(dict(row))
 
+
+@app.route("/api/courses/<int:course_id>/lessons")
+def get_course_lessons(course_id):
+    connection = get_connection()
+
+    rows = connection.execute(
+        "SELECT id, course_id, title, duration, content FROM lessons WHERE course_id = ? ORDER BY id",
+        (course_id,)
+    ).fetchall()
+
+    connection.close()
+
+    return jsonify([dict(row) for row in rows])
 if __name__ == "__main__":
     app.run(debug=True)

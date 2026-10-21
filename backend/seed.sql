@@ -27,3 +27,29 @@ VALUES
 
 (9, 'Advanced Highcharts Features', 'Advanced', '4 hours', NULL,
  'Explore advanced chart options and techniques for more complex data visualisations.');
+
+ INSERT OR IGNORE INTO lessons
+(id, course_id, title, duration, content)
+VALUES
+(1, 1, 'What is Highcharts?', '10 minutes',
+ 'Introduction to Highcharts, what it is used for, and how interactive charts help visualise data.');
+ INSERT OR IGNORE INTO lessons
+(id, course_id, title, duration, content)
+VALUES
+(2, 1, 'Setting Up Highcharts', '15 minutes',
+ 'Learn how to include the Highcharts library in a webpage and prepare an HTML container for your first chart.');
+ INSERT OR IGNORE INTO lessons
+(id, course_id, title, duration, content)
+VALUES
+(3, 1, 'Creating Your First Chart', '20 minutes',
+ 'Learn how to create a simple chart using Highcharts and display it on a webpage.');
+ INSERT OR IGNORE INTO lessons
+(id, course_id, title, duration, content)
+VALUES
+(4, 1, 'Understanding Chart Data', '20 minutes',
+ 'Learn how Highcharts uses data and how to add or change values displayed in a chart.');
+ INSERT OR IGNORE INTO lessons
+(id, course_id, title, duration, content)
+VALUES
+(5, 1, 'Customising Your Chart', '15 minutes',
+ 'Learn how to change chart titles, colours and labels to make your visualisations clearer.');

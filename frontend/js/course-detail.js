@@ -30,3 +30,35 @@ document.getElementById("course-about-text").textContent = course.description;
 }
 
 loadCourseDetails();
+async function loadCourseLessons() {
+    try {
+        const response = await fetch(`/api/courses/${courseId}/lessons`);
+
+        if (!response.ok) {
+            throw new Error("Could not load lessons");
+        }
+
+        const lessons = await response.json();
+
+        console.log("Lessons loaded:", lessons);
+        document.getElementById("course-lesson-count").textContent =
+    `${lessons.length} lessons`;
+        const lessonsStatus = document.getElementById("lessons-status");
+
+if (lessons.length > 0) {
+    lessonsStatus.hidden = true;
+}
+        const lessonList = document.getElementById("lesson-list");
+lessonList.innerHTML = "";
+
+lessons.forEach(lesson => {
+    const listItem = document.createElement("li");
+    listItem.textContent = `${lesson.title} — ${lesson.duration}`;
+    lessonList.appendChild(listItem);
+});
+
+    } catch (error) {
+        console.error("Error loading lessons:", error);
+    }
+}
+loadCourseLessons();
