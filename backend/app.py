@@ -21,7 +21,21 @@ def get_courses():
     connection.close()
 
     return jsonify(courses)
+@app.route("/api/courses/<int:course_id>")
+def get_course(course_id):
+    connection = get_connection()
 
+    row = connection.execute(
+        "SELECT id, title, level, duration, chart_type, description FROM courses WHERE id = ?",
+        (course_id,)
+    ).fetchone()
+
+    connection.close()
+
+    if row is None:
+        return jsonify({"error": "Course not found"}), 404
+
+    return jsonify(dict(row))
 
 if __name__ == "__main__":
     app.run(debug=True)

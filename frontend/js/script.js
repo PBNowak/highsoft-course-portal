@@ -76,8 +76,9 @@ duration.textContent = `~ ${course.duration}`;
                 button.className = "course-button";
                 button.textContent = "View course";
                 button.type = "button";
-                button.disabled = true;
-                button.title = "Course details coming soon";
+                button.addEventListener("click", () => {
+    window.location.href = `course-detail.html?id=${course.id}`;
+});
 
                 card.append(image, meta, title, description, button);
                 courseList.appendChild(card);
