@@ -13,7 +13,7 @@ docs/ – Project documentation
 
 - Frontend: HTML, CSS and JavaScript
 - Backend: Python and Flask
-- Database: SQLite (proposed)
+- Database: SQLite (implemented for course storage)
 - Version Control: Git and GitHub
 
 ## Architecture and Data Flow
@@ -22,17 +22,17 @@ The application uses a frontend and backend architecture.
 
 - **Frontend:** HTML and CSS provide the user interface, while JavaScript handles interactions and requests data from the backend.
 - **Backend:** Python and Flask handle API requests and provide course information in JSON format.
-- **Database:** SQLite is planned for storing courses, lessons, and learner progress.
+- **Database:** SQLite is implemented for storing course information. Database support for lessons, enrolments, and learner progress is planned.
 
 ### Current Data Flow
 
 1. The user opens the Course Overview page.
 2. JavaScript sends a GET request to `/api/courses`.
-3. Flask processes the request and returns example course data as JSON.
+3. Flask retrieves the course information from the SQLite database and returns it as JSON.
 4. JavaScript receives the data and dynamically creates course cards.
 5. The course cards and total number of available courses are displayed on the page.
 
-Currently, the example course data is stored directly in the Flask application. In future development, this data will be stored in SQLite.
+Course information is now stored in SQLite rather than directly in the Flask application. The database currently contains nine sample courses, with additional database functionality planned for future development.
 
 This separation allows the frontend to display course information without having to store the course content directly in the HTML.
 
@@ -94,15 +94,15 @@ The frontend should be opened through Flask on port 5000 so that JavaScript requ
 
 The project is currently in active development.
 
-The initial frontend structure and Flask backend have been implemented
-and successfully connected.
+The frontend, Flask backend, and SQLite database have been implemented and successfully connected.
 
-The Course Overview page can now fetch example course data from the
-Flask API and display course cards dynamically using JavaScript.
+The Course Overview page retrieves nine sample courses from SQLite through the Flask API and displays them dynamically using JavaScript.
 
-The page styling is being developed based on our high-fidelity
-Figma designs. Additional functionality, including course search,
-filtering, progress tracking, and database integration, is planned.
+Live search, course filtering, sorting, course counts, and Load more functionality are implemented and tested.
+
+The interface is being styled based on our high-fidelity Figma designs.
+
+Future development will focus on course details, lessons, enrolment, learner progress tracking, and basic administration functionality.
 
 ### Backend Development
 
@@ -112,6 +112,26 @@ filtering, progress tracking, and database integration, is planned.
 - First API endpoint (`/api/courses`) implemented.
 - API returns example course data in JSON format.
 - Backend dependencies saved in `backend/requirements.txt`.
+
+### SQLite Database
+
+The project now uses SQLite to store course information.
+
+Database files:
+- `backend/database.py` — database connection and setup functions.
+- `backend/schema.sql` — defines the courses table.
+- `backend/seed.sql` — contains nine sample courses.
+
+To set up the database, run these commands from the project root:
+
+```powershell
+python -c "from backend.database import init_db; init_db()"
+python -c "from backend.database import seed_db; seed_db()"
+```
+
+The database is stored locally in `backend/courses.db` and is excluded from GitHub using `.gitignore`.
+
+The Flask `/api/courses` endpoint now retrieves course information from SQLite instead of a hardcoded Python list.
 
 
 ### Frontend Development
@@ -127,10 +147,9 @@ filtering, progress tracking, and database integration, is planned.
 - "View course" buttons added as placeholders for future Course Detail pages.
 - Footer added with navigation links and project information.
 - Live course search implemented using JavaScript, allowing users to search course titles and descriptions.
-- - Course sorting implemented using JavaScript, allowing users to switch between default course order and shortest duration first.
+- Course sorting implemented using JavaScript, allowing users to switch between default course order and shortest duration first.
 - Course count and Load more button update automatically based on search results.
 - Search, sorting and Load more work together.
-- Filter dropdowns are not yet functional.
 - Course Overview styling updated with Highsoft branding, improved navigation, difficulty badges and responsive course cards.
 - Responsive styling and further UI improvements are in progress.
 
@@ -151,9 +170,9 @@ The Flask API currently provides nine sample courses. Chart types are stored in 
 ### Next Steps
 
 - Complete the Course Overview page styling based on the Figma design.
-- Implement functional course filtering using the existing dropdown menus.
-- Develop the Course Detail and Lesson pages.
-- Set up the SQLite database to store course information.
+- Develop the Course Detail page and connect the "View course" buttons.
+- Create lesson pages and lesson content.
+- Extend the SQLite database to support lessons, enrolments, and learner progress.
 - Implement lesson completion and learner progress tracking.
 - Use Highcharts to visualise learner progress.
 - Explore basic admin functionality for managing courses.
