@@ -230,5 +230,70 @@ def get_student_progress(student_id):
 
     finally:
         connection.close()
+
+
+@app.route("/api/students/<int:student_id>/courses")
+def get_student_courses(student_id):
+    connection = get_connection()
+
+    try:
+        student = connection.execute(
+            "SELECT id FROM students WHERE id = ?",
+            (student_id,)
+        ).fetchone()
+
+        if student is None:
+            return jsonify({"error": "Student not found"}), 404
+
+        consent = connection.execute(
+            "SELECT consent_given FROM progress_consents WHERE student_id = ?",
+            (student_id,)
+        ).fetchone()
+
+        if consent is None or not consent["consent_given"]:
+            return jsonify({
+                "student_id": student_id,
+                "courses": []
+            })
+
+        rows = connection.execute(
+            """
+            SELECT
+                c.id AS course_id,
+                c.title,
+                COUNT(DISTINCT l.id) AS total_lessons,
+                COUNT(DISTINCT lc.lesson_id) AS completed_lessons
+            FROM courses c
+            JOIN lessons l ON l.course_id = c.id
+            JOIN lesson_completions lc
+                ON lc.lesson_id = l.id
+                AND lc.student_id = ?
+            GROUP BY c.id, c.title
+            ORDER BY MAX(lc.completed_at) DESC
+            """,
+            (student_id,)
+        ).fetchall()
+
+        courses = []
+
+        for row in rows:
+            total = row["total_lessons"]
+            completed = row["completed_lessons"]
+
+            courses.append({
+                "course_id": row["course_id"],
+                "title": row["title"],
+                "completed_lessons": completed,
+                "total_lessons": total,
+                "progress_percent": round(completed / total * 100)
+            })
+
+        return jsonify({
+            "student_id": student_id,
+            "courses": courses
+        })
+
+    finally:
+        connection.close()
 if __name__ == "__main__":
     app.run(debug=True)
