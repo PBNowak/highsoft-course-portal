@@ -14,3 +14,23 @@ CREATE TABLE IF NOT EXISTS lessons (
     content TEXT NOT NULL,
     FOREIGN KEY (course_id) REFERENCES courses(id)
 );
+CREATE TABLE IF NOT EXISTS students (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    is_demo INTEGER NOT NULL DEFAULT 1
+);
+CREATE TABLE IF NOT EXISTS progress_consents (
+    student_id INTEGER PRIMARY KEY,
+    consent_given INTEGER NOT NULL DEFAULT 0 CHECK (consent_given IN (0, 1)),
+    updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (student_id) REFERENCES students(id)
+);
+CREATE TABLE IF NOT EXISTS lesson_completions (
+    id INTEGER PRIMARY KEY,
+    student_id INTEGER NOT NULL,
+    lesson_id INTEGER NOT NULL,
+    completed_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (student_id) REFERENCES students(id),
+    FOREIGN KEY (lesson_id) REFERENCES lessons(id),
+    UNIQUE (student_id, lesson_id)
+);

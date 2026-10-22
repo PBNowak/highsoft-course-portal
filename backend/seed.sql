@@ -53,3 +53,13 @@ VALUES
 VALUES
 (5, 1, 'Customising Your Chart', '15 minutes',
  'Learn how to change chart titles, colours and labels to make your visualisations clearer.');
+ INSERT OR IGNORE INTO students
+(id, name, is_demo)
+VALUES
+(1, 'Kari', 1);
+INSERT OR IGNORE INTO students
+(id, name, is_demo)
+VALUES
+(2, 'Emma', 1),
+(3, 'Jonas', 1),
+(4, 'Sofie', 1);

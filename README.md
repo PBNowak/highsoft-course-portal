@@ -22,7 +22,7 @@ The application uses a frontend and backend architecture.
 
 - **Frontend:** HTML and CSS provide the user interface, while JavaScript handles interactions and requests data from the backend.
 - **Backend:** Python and Flask handle API requests and provide course information in JSON format.
-- **Database:** SQLite stores course information and lessons. Each lesson is linked to a course using a course ID. Database support for enrolments and learner progress is planned.
+- **Database:** SQLite stores courses, lessons, fictional demo students, consent preferences, and completed lessons. Each lesson is linked to a course using a course ID. Student progress is saved only when consent has been given. Enrolment functionality is planned for future development.
 
 ### Current Data Flow
 
@@ -106,7 +106,7 @@ The interface is being styled based on our high-fidelity Figma designs.
 
 The Course Detail page is now implemented and connected to the Flask API and SQLite database. Users can open individual courses and return to the Course Overview page.
 
-Future development will focus on lessons, enrolment, learner progress tracking, and basic administration functionality.
+Future development will focus on connecting the Lesson page to the Flask API, implementing the student-facing progress interface, adding course enrolment functionality, and developing the admin dashboard. The shared backend APIs for student consent and lesson completions are already implemented and tested.
 
 ### Backend Development
 
@@ -119,11 +119,11 @@ Future development will focus on lessons, enrolment, learner progress tracking, 
 
 ### SQLite Database
 
-The project now uses SQLite to store course information.
+The project uses SQLite to store courses, lessons, fictional demo students, progress consent, and lesson completions.
 
 Database files:
 - `backend/database.py` — database connection and setup functions.
-- `backend/schema.sql` — defines the courses and lessons tables.
+- `backend/schema.sql` — defines the courses, lessons, students, progress_consents, and lesson_completions tables.
 - `backend/seed.sql` — contains nine sample courses and five sample lessons for Introduction to Highcharts.
 
 To set up the database, run these commands from the project root:
@@ -196,6 +196,33 @@ The Flask API currently provides nine sample courses. Chart types are stored in 
 - Previous and Next buttons are included but currently disabled.
 - The page is not yet connected to the Flask API or SQLite database.
 - Dynamic lesson content, interactive exercises, and progress tracking will be implemented in future development.
+  
+  ### Student Progress and Consent System
+
+The backend now includes a basic student progress tracking system using Flask and SQLite.
+
+**Database tables:**
+- `students` — stores fictional demo student information.
+- `progress_consents` — records whether a student has agreed to progress storage.
+- `lesson_completions` — stores completed lessons and completion timestamps.
+
+Four fictional demo students have been added: Kari, Emma, Jonas, and Sofie. Kari (student ID 1) is used for testing the student experience.
+
+**New API endpoints:**
+- `GET /api/students` — returns the demo students.
+- `GET /api/students/<int:student_id>/consent` — retrieves a student's consent status.
+- `POST /api/students/<int:student_id>/consent` — gives or withdraws consent.
+- `POST /api/students/<int:student_id>/lessons/<int:lesson_id>/complete` — records a completed lesson when consent has been given.
+- `GET /api/students/<int:student_id>/progress` — retrieves saved lesson completions and consent status.
+
+**Consent and privacy:**
+- Lesson completions cannot be saved without consent.
+- Withdrawing consent automatically deletes previously stored lesson completions.
+- Duplicate lesson completions are prevented.
+- Consent and lesson-completion functionality have been tested successfully using the Flask API and SQLite.
+- The system currently uses fictional demo students without authentication. It is intended for demonstration purposes only and is not suitable for storing real student information without additional security and privacy measures.
+
+The backend functionality is implemented, but the student-facing progress interface and admin dashboard integration are still in development.
    
 ### Next Steps
 
@@ -204,8 +231,9 @@ The Flask API currently provides nine sample courses. Chart types are stored in 
 - Display dynamic lesson content and implement Previous/Next lesson navigation.
 - Add learning outcomes and prerequisites for individual courses.
 - Develop interactive lesson exercises and chart examples using Highcharts.
-- Extend SQLite to support enrolments and learner progress.
-- Implement lesson completion and learner progress tracking.
+- Add database support for course enrolments.
+- Connect the student-facing lesson completion and progress tracking interface to the existing Flask API.
+- Integrate student progress data into the admin dashboard.
 - Use Highcharts to visualise learner progress.
 - Explore basic admin functionality for managing courses.
 - Continue improving accessibility and responsive design.
