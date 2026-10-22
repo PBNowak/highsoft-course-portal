@@ -244,6 +244,19 @@ The current implementation uses demo student Kari (ID 1).
 Progress is only saved when the student has given consent.
 
 The lesson page is still under development. Chart examples, practice activities, contextual help, and final styling will be added later.
+
+### Navigation and UI Improvements
+
+- Added consistent navigation bars and footers to the Course Detail and Lesson pages.
+- Applied IBM Plex Sans across all three course pages.
+- Improved the responsive lesson layout with a sidebar.
+- Styled lesson navigation, consent, completion, and Previous/Next buttons.
+- Added visual indicators for completed and currently selected lessons.
+- Connected the complete learning flow:
+  Courses → Course Details → Start Course → Lesson.
+- Fixed course ID parameters so course details load correctly.
+- Added navigation from lessons back to their course details.
+- The Start course button is enabled only when lessons are available.
    
 ### Next Steps
 

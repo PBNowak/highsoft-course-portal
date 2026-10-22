@@ -3,6 +3,11 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const courseId = params.get("course_id");
     const lessonId = params.get("lesson_id");
+    const backToCourseLink = document.querySelector(".lesson-header .back-link");
+
+if (backToCourseLink && courseId) {
+    backToCourseLink.href = `course-detail.html?course_id=${courseId}`;
+}
     const studentId = 1; // Kari, our demo student
     let completedLessonIds = [];
 

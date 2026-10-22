@@ -535,3 +535,181 @@ header nav a:hover {
         flex-direction: column;
     }
 }
+
+/* Lesson page layout */
+
+.lesson-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 24px;
+}
+
+.lesson-layout {
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: 32px;
+    margin-top: 32px;
+}
+
+.lesson-sidebar {
+    background-color: #f5f7fb;
+    padding: 24px;
+    border-radius: 12px;
+}
+
+.lesson-main {
+    min-width: 0;
+}
+
+@media (max-width: 768px) {
+    .lesson-layout {
+        grid-template-columns: 1fr;
+    }
+}
+/* Lesson sidebar links */
+
+#lesson-navigation {
+    padding-left: 20px;
+}
+
+#lesson-navigation li {
+    margin-bottom: 14px;
+    line-height: 1.5;
+}
+
+#lesson-navigation a {
+    color: #30366f;
+    text-decoration: none;
+}
+
+#lesson-navigation a:hover {
+    text-decoration: underline;
+}
+
+#lesson-navigation a.active {
+    font-weight: bold;
+    color: #2458c6;
+}
+
+#lesson-navigation a.completed {
+    color: #218052;
+}
+/* Lesson progress consent */
+
+.progress-consent {
+    background-color: #f5f7fb;
+    border: 1px solid #dce3f0;
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 32px;
+    margin-bottom: 24px;
+}
+
+.progress-consent h2 {
+    margin-top: 0;
+    color: #30366f;
+}
+
+.progress-consent label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+    cursor: pointer;
+}
+
+.progress-consent input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #30366f;
+}
+
+#save-consent {
+    background-color: #30366f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#save-consent:hover {
+    background-color: #2458c6;
+}
+
+#consent-message {
+    margin-top: 12px;
+    color: #218052;
+}
+/* Lesson completion section */
+
+.lesson-completion {
+    background-color: #f5f7fb;
+    border: 1px solid #dce3f0;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.lesson-completion h2 {
+    margin-top: 0;
+    color: #30366f;
+}
+
+#completion-message {
+    margin: 16px 0;
+}
+
+#complete-lesson {
+    background-color: #30366f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#complete-lesson:hover:not(:disabled) {
+    background-color: #2458c6;
+}
+
+#complete-lesson:disabled {
+    background-color: #dce3e9;
+    color: #64748b;
+    cursor: not-allowed;
+}
+/* Previous and Next lesson buttons */
+
+.lesson-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.lesson-buttons button {
+    background-color: #30366f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.lesson-buttons button:hover:not(:disabled) {
+    background-color: #2458c6;
+}
+
+.lesson-buttons button:disabled {
+    background-color: #dce3e9;
+    color: #64748b;
+    cursor: not-allowed;
+}
+
+.lesson-buttons button:focus-visible {
+    outline: 3px solid #2458c6;
+    outline-offset: 3px;
+}
