@@ -15,6 +15,7 @@
             <a href="courses.html" class="back-link">← Back to course</a>
             <p id="lesson-number">Lesson 1 of 5</p>
             <progress id="lesson-progress" value="0" max="100"></progress>
+            <span id="progress-percentage">0%</span>
         </section>
 
         <div class="lesson-layout">
@@ -52,7 +53,38 @@
                     <h2>Need help?</h2>
                     <div id="lesson-help-content"></div>
                 </section>
+                <!-- Progress tracking consent -->
+<section class="progress-consent">
+    <h2>Save your learning progress</h2>
 
+    <p>
+        You can choose whether to save your lesson progress.
+        Your progress will only be stored if you give consent.
+    </p>
+
+    <label for="progress-consent-checkbox">
+        <input type="checkbox" id="progress-consent-checkbox">
+        I agree to save my learning progress.
+    </label>
+
+    <button type="button" id="save-consent">
+        Save preference
+    </button>
+
+    <p id="consent-message" role="status"></p>
+</section>
+                <!-- Lesson completion -->
+<section class="lesson-completion">
+    <h2>Lesson progress</h2>
+
+    <p id="completion-message" role="status">
+        Complete this lesson when you are ready.
+    </p>
+
+    <button type="button" id="complete-lesson">
+        Mark lesson as completed
+    </button>
+</section>
                 <!-- Lesson navigation -->
                 <nav class="lesson-buttons" aria-label="Lesson navigation">
                     <button type="button" id="previous-lesson" disabled>
@@ -67,7 +99,8 @@
             </article>
         </div>
 
-    </main>
+        </main>
 
+    <script src="js/lesson.js" defer></script>
 </body>
 </html>
