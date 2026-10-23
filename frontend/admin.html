@@ -48,6 +48,24 @@
                 <p class="stat-label">Avg. completion</p>
             </div>
         </section>
+        
+        <!-- Top courses chart -->
+        <section class="admin-section" aria-labelledby="top-courses-heading">
+            <div class="section-header">
+                <h2 id="top-courses-heading">Top courses</h2>
+
+                <!-- aria-pressed tells screen readers which button is active.
+                     data-mode is our own attribute, read by admin.js -->
+                <div class="chart-toggle" role="group" aria-label="Sort top courses">
+                    <button type="button" class="toggle-btn" data-mode="started" aria-pressed="true">Most started</button>
+                    <button type="button" class="toggle-btn" data-mode="highest" aria-pressed="false">Highest completion</button>
+                    <button type="button" class="toggle-btn" data-mode="lowest" aria-pressed="false">Lowest completion</button>
+                </div>
+            </div>
+
+            <!-- Highcharts draws the chart inside this div -->
+            <div id="courses-chart" class="chart"></div>
+        </section>
     </main>
 
     <footer class="site-footer">
@@ -71,5 +89,11 @@
 
     <!-- defer: runs after the HTML is loaded, so the ids above exist -->
     <script src="js/admin.js" defer></script>
+       
+    
+    <!-- Highcharts library + accessibility module (screen reader and keyboard support).
+         defer keeps the order, so admin.js runs after Highcharts has loaded -->
+    <script src="https://code.highcharts.com/highcharts.js" defer></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js" defer></script>
 </body>
 </html>
