@@ -223,6 +223,40 @@ Four fictional demo students have been added: Kari, Emma, Jonas, and Sofie. Kari
 - The system currently uses fictional demo students without authentication. It is intended for demonstration purposes only and is not suitable for storing real student information without additional security and privacy measures.
 
 The backend functionality is implemented, but the student-facing progress interface and admin dashboard integration are still in development.
+
+## Student Lesson Page
+
+The student lesson page is now connected to the Flask API and SQLite database.
+
+Implemented features:
+- Dynamic lesson titles and content
+- Lesson sidebar with clickable navigation
+- Previous and Next lesson buttons
+- Current lesson number
+- Student consent preferences for progress tracking
+- Saving lesson completion to SQLite
+- Recognising previously completed lessons
+- Course progress bar with percentage
+- Completion checkmarks in the lesson sidebar
+
+The current implementation uses demo student Kari (ID 1).
+
+Progress is only saved when the student has given consent.
+
+The lesson page is still under development. Chart examples, practice activities, contextual help, and final styling will be added later.
+
+### Navigation and UI Improvements
+
+- Added consistent navigation bars and footers to the Course Detail and Lesson pages.
+- Applied IBM Plex Sans across all three course pages.
+- Improved the responsive lesson layout with a sidebar.
+- Styled lesson navigation, consent, completion, and Previous/Next buttons.
+- Added visual indicators for completed and currently selected lessons.
+- Connected the complete learning flow:
+  Courses → Course Details → Start Course → Lesson.
+- Fixed course ID parameters so course details load correctly.
+- Added navigation from lessons back to their course details.
+- The Start course button is enabled only when lessons are available.
    
 ### Next Steps
 
