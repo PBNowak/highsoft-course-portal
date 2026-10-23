@@ -295,5 +295,64 @@ def get_student_courses(student_id):
 
     finally:
         connection.close()
+        
+
+# --- Admin: progress per student (used by the Students table) ---
+# Only students who have given consent are included.
+@app.route("/api/admin/students")
+def get_admin_students():
+    connection = get_connection()
+
+    try:
+        rows = connection.execute(
+            """
+            SELECT
+                s.id AS student_id,
+                s.name,
+                COUNT(p.course_id) AS courses_started,
+                COALESCE(ROUND(AVG(p.completed * 100.0 / t.total_lessons)), 0) AS overall_progress,
+                MAX(p.last_completed) AS last_active
+            FROM students s
+            JOIN progress_consents pc
+                ON pc.student_id = s.id
+                AND pc.consent_given = 1
+            LEFT JOIN (
+                SELECT
+                    lc.student_id,
+                    l.course_id,
+                    COUNT(*) AS completed,
+                    MAX(lc.completed_at) AS last_completed
+                FROM lesson_completions lc
+                JOIN lessons l ON l.id = lc.lesson_id
+                GROUP BY lc.student_id, l.course_id
+            ) p ON p.student_id = s.id
+            LEFT JOIN (
+                SELECT course_id, COUNT(*) AS total_lessons
+                FROM lessons
+                GROUP BY course_id
+            ) t ON t.course_id = p.course_id
+            GROUP BY s.id, s.name
+            ORDER BY overall_progress DESC
+            """
+        ).fetchall()
+
+        students = []
+
+        for row in rows:
+            students.append({
+                "student_id": row["student_id"],
+                "name": row["name"],
+                "courses_started": row["courses_started"],
+                "overall_progress": int(row["overall_progress"]),
+                "last_active": row["last_active"]
+            })
+
+        return jsonify(students)
+
+    finally:
+        connection.close()
+
+if __name__ == "__main__":
+    app.run(debug=True)
 if __name__ == "__main__":
     app.run(debug=True)
