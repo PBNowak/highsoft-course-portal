@@ -261,7 +261,7 @@ def get_student_courses(student_id):
             SELECT
                 c.id AS course_id,
                 c.title,
-                COUNT(DISTINCT l.id) AS total_lessons,
+                (SELECT COUNT(*) FROM lessons WHERE course_id = c.id) AS total_lessons,
                 COUNT(DISTINCT lc.lesson_id) AS completed_lessons
             FROM courses c
             JOIN lessons l ON l.course_id = c.id
