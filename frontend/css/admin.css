@@ -1,0 +1,42 @@
+/* ============================================================
+   ADMIN DASHBOARD — STYLES
+   Uses the color variables from style.css
+   Contents:
+     1. KEY NUMBERS (stat cards)
+   ============================================================ */
+
+
+/* ============================================================
+   1. KEY NUMBERS
+   ============================================================ */
+
+.admin-stats {
+    display: grid;
+    /* As many columns as fit, each at least 200px.
+       3 across on desktop, stacked on mobile. */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.stat-card {
+    background-color: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+}
+
+.stat-number {
+    margin: 0;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--brand-deep);
+}
+
+.stat-label {
+    margin: 4px 0 0;
+    font-size: 16px;
+    color: var(--muted);
+}

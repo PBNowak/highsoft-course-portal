@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview | Highsoft Course Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- admin.css must come after style.css so admin rules win if they collide -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="nav-logo">
+                <img src="logos/highcharts-logo-dark.png" alt="Highcharts home">
+            </a>
+
+            <ul>
+                <li><a href="admin.html" aria-current="page">Overview</a></li>
+                <li><a href="courses.html">Courses</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Overview</h1>
+        <p>Course progress and student insight. Only students who have given consent are included.</p>
+
+        <!-- Key numbers. The ids are filled in by admin.js -->
+        <section class="admin-stats" aria-label="Key numbers">
+            <div class="stat-card">
+                <p class="stat-number" id="stat-students">–</p>
+                <p class="stat-label">Students</p>
+            </div>
+
+            <div class="stat-card">
+                <p class="stat-number" id="stat-active-courses">–</p>
+                <p class="stat-label">Active courses</p>
+            </div>
+
+            <div class="stat-card">
+                <p class="stat-number" id="stat-avg-completion">–</p>
+                <p class="stat-label">Avg. completion</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>Highsoft Course Portal</h2>
+                <p>Learn, practise and grow your data visualisation skills.</p>
+            </div>
+
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <a href="index.html">Home</a>
+                <a href="courses.html">Courses</a>
+                <a href="admin.html">Overview</a>
+            </nav>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Highsoft Course Portal. Student project prototype.</p>
+        </div>
+    </footer>
+
+    <!-- defer: runs after the HTML is loaded, so the ids above exist -->
+    <script src="js/admin.js" defer></script>
+</body>
+</html>
