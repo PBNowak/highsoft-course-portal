@@ -66,6 +66,24 @@
             <!-- Highcharts draws the chart inside this div -->
             <div id="courses-chart" class="chart"></div>
         </section>
+
+        <section class="admin-section" aria-labelledby="students-heading">
+            <h2 id="students-heading">Students</h2>
+
+            <table class="students-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Courses</th>
+                        <th scope="col">Progress</th>
+                        <th scope="col">Last active</th>
+                        <th scope="col"><span class="visually-hidden">Actions</span></th>
+                    </tr>
+                </thead>
+                <!-- Rows are added by admin.js -->
+                <tbody id="students-table-body"></tbody>
+            </table>
+        </section>
     </main>
 
     <footer class="site-footer">

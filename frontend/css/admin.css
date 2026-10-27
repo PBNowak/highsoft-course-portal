@@ -6,6 +6,7 @@
      1. KEY NUMBERS (stat cards)
      2. SECTIONS
      3. TOP COURSES CHART
+     4. STUDENTS TABLE
    ============================================================ */
 
 
@@ -123,4 +124,89 @@
 .chart {
     height: 360px;
     margin-top: 24px;
+}
+
+
+
+/* ============================================================
+   4. STUDENTS TABLE
+   ============================================================ */
+
+.students-table {
+    width: 100%;
+    margin-top: 16px;
+    border-collapse: collapse;   /* one shared line between cells instead of double borders */
+    text-align: left;
+}
+
+.students-table th {
+    padding: 12px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border-strong);
+}
+
+.students-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.students-table tbody tr:hover {
+    background-color: var(--surface-page);
+}
+
+/* --- Progress bar: bar and percentage side by side --- */
+.progress-bar {
+    display: inline-block;
+    width: 120px;
+    height: 8px;
+    margin-right: 8px;
+    vertical-align: middle;
+    background-color: var(--surface-band);
+    border-radius: 999px;
+    overflow: hidden;            /* keeps the fill inside the rounded ends */
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--brand);
+    border-radius: 999px;
+}
+
+.progress-text {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* --- View button --- */
+.view-btn {
+    padding: 6px 16px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--brand);
+    background-color: var(--surface-card);
+    border: 1px solid var(--brand);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.view-btn:hover {
+    background-color: var(--surface-page);
+}
+
+.view-btn:focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+}
+
+/* --- Mobile: let the table scroll sideways instead of squeezing --- */
+@media (max-width: 700px) {
+    .admin-section {
+        overflow-x: auto;
+    }
 }

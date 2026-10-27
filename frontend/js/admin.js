@@ -30,6 +30,7 @@ async function loadAdminData() {
         const students = await studentsResponse.json();
 
         showKeyNumbers(adminCourses, students);
+        showStudentsTable(students);
         showCoursesChart("started");
 
     } catch (error) {
@@ -59,6 +60,90 @@ function showKeyNumbers(courses, students) {
     document.getElementById("stat-students").textContent = studentCount;
     document.getElementById("stat-active-courses").textContent = activeCourses;
     document.getElementById("stat-avg-completion").textContent = `${avgCompletion}%`;
+}
+
+
+
+// --- Students table ---
+function showStudentsTable(students) {
+    const tableBody = document.getElementById("students-table-body");
+    tableBody.innerHTML = "";
+
+    // Empty state: show a message instead of an empty table
+    if (students.length === 0) {
+        const row = document.createElement("tr");
+        const cell = document.createElement("td");
+        cell.colSpan = 5;   // stretch the cell across all five columns
+        cell.textContent = "No students have given consent yet.";
+        row.appendChild(cell);
+        tableBody.appendChild(row);
+        return;
+    }
+
+    students.forEach(student => {
+        const row = document.createElement("tr");
+
+        // We build cells with textContent instead of writing HTML with innerHTML.
+        // textContent always treats data as plain text, so a name like
+        // "<script>" can never run as code (protects against XSS).
+        const nameCell = document.createElement("td");
+        nameCell.textContent = student.name;
+
+        const coursesCell = document.createElement("td");
+        coursesCell.textContent = student.courses_started;
+
+        // Progress: a bar + the number as text.
+        // The bar is only decoration (aria-hidden), the text is what screen readers read.
+        const progressCell = document.createElement("td");
+
+        const bar = document.createElement("div");
+        bar.className = "progress-bar";
+        bar.setAttribute("aria-hidden", "true");
+
+        const fill = document.createElement("div");
+        fill.className = "progress-fill";
+        fill.style.width = `${student.overall_progress}%`;   // e.g. width: 80%
+        bar.appendChild(fill);
+
+        const percent = document.createElement("span");
+        percent.className = "progress-text";
+        percent.textContent = `${student.overall_progress}%`;
+
+        progressCell.append(bar, percent);
+
+        const lastActiveCell = document.createElement("td");
+        lastActiveCell.textContent = formatDate(student.last_active);
+
+        // View button. data-student-id stores which student it belongs to,
+        // so the next step (student details) knows who to show.
+        const actionCell = document.createElement("td");
+        const viewButton = document.createElement("button");
+        viewButton.type = "button";
+        viewButton.className = "view-btn";
+        viewButton.textContent = "View";
+        viewButton.dataset.studentId = student.student_id;
+        // Screen readers hear "View Jonas" instead of only "View"
+        viewButton.setAttribute("aria-label", `View ${student.name}`);
+        actionCell.appendChild(viewButton);
+
+        row.append(nameCell, coursesCell, progressCell, lastActiveCell, actionCell);
+        tableBody.appendChild(row);
+    });
+}
+
+
+// Turns "2026-10-21 18:00:00" into "21 Oct"
+function formatDate(dateText) {
+    // A student who has consented but not started has no date yet
+    if (!dateText) {
+        return "–";
+    }
+
+    // Some browsers can't read the space between date and time,
+    // so we swap it for a "T" (the standard format: 2026-10-21T18:00:00)
+    const date = new Date(dateText.replace(" ", "T"));
+
+    return date.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
 }
 
 
