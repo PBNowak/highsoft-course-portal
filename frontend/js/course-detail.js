@@ -1,6 +1,6 @@
 // Get the course ID from the page URL
 const urlParams = new URLSearchParams(window.location.search);
-const courseId = urlParams.get("id");
+const courseId = urlParams.get("course_id");
 
 console.log("Selected course ID:", courseId);
 
@@ -47,6 +47,18 @@ async function loadCourseLessons() {
 
 if (lessons.length > 0) {
     lessonsStatus.hidden = true;
+}
+const startCourseButton = document.getElementById("start-course-btn");
+
+if (lessons.length > 0) {
+    startCourseButton.disabled = false;
+
+    startCourseButton.addEventListener("click", () => {
+        const firstLesson = lessons[0];
+
+        window.location.href =
+            `lesson.html?course_id=${courseId}&lesson_id=${firstLesson.id}`;
+    });
 }
         const lessonList = document.getElementById("lesson-list");
 lessonList.innerHTML = "";

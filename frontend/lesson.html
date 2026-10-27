@@ -4,10 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lesson | Highsoft Course Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<header>
+    <nav aria-label="Main navigation">
+        <a href="index.html" class="nav-logo">
+            <img src="logos/highcharts-logo-dark.png" alt="Highcharts home">
+        </a>
 
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <a href="login.html" class="login-btn">
+            <span class="login-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <circle cx="12" cy="8" r="4"/>
+                    <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8z"/>
+                </svg>
+            </span>
+            Log in
+        </a>
+    </nav>
+</header>
     <main class="lesson-page">
 
         <!-- Back navigation and progress -->
@@ -15,6 +41,7 @@
             <a href="courses.html" class="back-link">← Back to course</a>
             <p id="lesson-number">Lesson 1 of 5</p>
             <progress id="lesson-progress" value="0" max="100"></progress>
+            <span id="progress-percentage">0%</span>
         </section>
 
         <div class="lesson-layout">
@@ -52,7 +79,38 @@
                     <h2>Need help?</h2>
                     <div id="lesson-help-content"></div>
                 </section>
+                <!-- Progress tracking consent -->
+<section class="progress-consent">
+    <h2>Save your learning progress</h2>
 
+    <p>
+        You can choose whether to save your lesson progress.
+        Your progress will only be stored if you give consent.
+    </p>
+
+    <label for="progress-consent-checkbox">
+        <input type="checkbox" id="progress-consent-checkbox">
+        I agree to save my learning progress.
+    </label>
+
+    <button type="button" id="save-consent">
+        Save preference
+    </button>
+
+    <p id="consent-message" role="status"></p>
+</section>
+                <!-- Lesson completion -->
+<section class="lesson-completion">
+    <h2>Lesson progress</h2>
+
+    <p id="completion-message" role="status">
+        Complete this lesson when you are ready.
+    </p>
+
+    <button type="button" id="complete-lesson">
+        Mark lesson as completed
+    </button>
+</section>
                 <!-- Lesson navigation -->
                 <nav class="lesson-buttons" aria-label="Lesson navigation">
                     <button type="button" id="previous-lesson" disabled>
@@ -67,7 +125,27 @@
             </article>
         </div>
 
-    </main>
+        </main>
+        <footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-brand">
+            <h2>Highsoft Course Portal</h2>
+            <p>Learn, practise and grow your data visualisation skills.</p>
+        </div>
 
+        <nav class="footer-nav" aria-label="Footer navigation">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="courses.html">Courses</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 Highsoft Course Portal. Student project prototype.</p>
+    </div>
+</footer>
+
+    <script src="js/lesson.js" defer></script>
 </body>
 </html>

@@ -77,7 +77,7 @@ duration.textContent = `~ ${course.duration}`;
                 button.textContent = "View course";
                 button.type = "button";
                 button.addEventListener("click", () => {
-    window.location.href = `course-detail.html?id=${course.id}`;
+    window.location.href = `course-detail.html?course_id=${course.id}`;
 });
 
                 card.append(image, meta, title, description, button);
