@@ -2,11 +2,11 @@
    ADMIN DASHBOARD — STYLES
    Uses the color variables from style.css
    Contents:
-       Contents:
      1. KEY NUMBERS (stat cards)
      2. SECTIONS
      3. TOP COURSES CHART
      4. STUDENTS TABLE
+     5. VIEW SWITCH (header)
    ============================================================ */
 
 
@@ -209,4 +209,32 @@
     .admin-section {
         overflow-x: auto;
     }
+}
+
+
+/* ============================================================
+   5. VIEW SWITCH (header)
+   ============================================================ */
+
+.view-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    background-color: var(--brand-deep);
+    color: #FFFFFF;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.15s;
+}
+
+.view-switch:hover {
+    background-color: var(--brand);
+}
+
+.view-switch-hint {
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.8;
 }

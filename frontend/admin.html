@@ -20,10 +20,19 @@
                 <img src="logos/highcharts-logo-dark.png" alt="Highcharts home">
             </a>
 
-            <ul>
+             <ul>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="admin.html" aria-current="page">Overview</a></li>
+                <!-- # jumps to the element with that id on the same page -->
+                <li><a href="#students-heading">Students</a></li>
                 <li><a href="courses.html">Courses</a></li>
             </ul>
+
+            <!-- Switch between admin and student view (instead of a login system, see report) -->
+            <a href="courses.html" class="view-switch">
+                Admin view
+                <span class="view-switch-hint">Switch to student</span>
+            </a>
         </nav>
     </header>
 
