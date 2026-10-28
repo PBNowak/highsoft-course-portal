@@ -13,23 +13,25 @@ let adminCourses = [];
 // --- Load data ---
 async function loadAdminData() {
     try {
-        // Promise.all starts both requests at the same time
-        // and waits until both have answered.
-        const [coursesResponse, studentsResponse] = await Promise.all([
+                // Promise.all starts all three requests at the same time
+        // and waits until all have answered.
+        const [coursesResponse, studentsResponse, allCoursesResponse] = await Promise.all([
             fetch("/api/admin/courses"),
-            fetch("/api/admin/students")
+            fetch("/api/admin/students"),
+            fetch("/api/courses")          // all courses, also the ones without lessons
         ]);
 
         // fetch does NOT fail on 404 or 500 by itself,
         // so we have to check .ok and throw an error ourselves.
-        if (!coursesResponse.ok || !studentsResponse.ok) {
+        if (!coursesResponse.ok || !studentsResponse.ok || !allCoursesResponse.ok) {
             throw new Error("Could not fetch admin data");
         }
 
         adminCourses = await coursesResponse.json();
         const students = await studentsResponse.json();
+        const allCourses = await allCoursesResponse.json();
 
-        showKeyNumbers(adminCourses, students);
+        showKeyNumbers(adminCourses, students, allCourses.length);
         showStudentsTable(students);
         showCoursesChart("started");
 
@@ -41,8 +43,7 @@ async function loadAdminData() {
 
 
 // --- Key numbers ---
-function showKeyNumbers(courses, students) {
-    // The API only returns students who have given consent
+function showKeyNumbers(courses, students, totalCourses) {    // The API only returns students who have given consent
     const studentCount = students.length;
 
     // filter() keeps the items where the check is true
@@ -58,7 +59,8 @@ function showKeyNumbers(courses, students) {
     }
 
     document.getElementById("stat-students").textContent = studentCount;
-    document.getElementById("stat-active-courses").textContent = activeCourses;
+    // e.g. "4 / 10": courses started out of all courses on the platform
+    document.getElementById("stat-active-courses").textContent = `${activeCourses} / ${totalCourses}`;
     document.getElementById("stat-avg-completion").textContent = `${avgCompletion}%`;
 }
 
