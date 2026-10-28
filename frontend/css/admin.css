@@ -1,0 +1,240 @@
+/* ============================================================
+   ADMIN DASHBOARD — STYLES
+   Uses the color variables from style.css
+   Contents:
+     1. KEY NUMBERS (stat cards)
+     2. SECTIONS
+     3. TOP COURSES CHART
+     4. STUDENTS TABLE
+     5. VIEW SWITCH (header)
+   ============================================================ */
+
+
+/* ============================================================
+   1. KEY NUMBERS
+   ============================================================ */
+
+.admin-stats {
+    display: grid;
+    /* As many columns as fit, each at least 200px.
+       3 across on desktop, stacked on mobile. */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.stat-card {
+    background-color: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px;
+    text-align: center;
+}
+
+.stat-number {
+    margin: 0;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--brand-deep);
+}
+
+.stat-label {
+    margin: 4px 0 0;
+    font-size: 16px;
+    color: var(--muted);
+}
+
+
+
+/* ============================================================
+   2. SECTIONS
+   ============================================================ */
+
+.admin-section {
+    margin-top: 48px;
+    padding: 24px;
+    background-color: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+
+/* Heading left, buttons right. Wraps on small screens */
+.section-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.section-header h2 {
+    margin: 0;
+    color: var(--brand-deep);
+}
+
+
+/* ============================================================
+   3. TOP COURSES CHART
+   ============================================================ */
+
+/* Three buttons joined together, like in the Figma design */
+.chart-toggle {
+    display: flex;
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    overflow: hidden;   /* keeps the button corners inside the rounded border */
+}
+
+.toggle-btn {
+    padding: 8px 16px;
+    font-family: inherit;
+    font-size: 14px;
+    color: var(--ink);
+    background-color: var(--surface-card);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+/* Thin line between the buttons, but not before the first one */
+.toggle-btn + .toggle-btn {
+    border-left: 1px solid var(--border-strong);
+}
+
+.toggle-btn:hover {
+    background-color: var(--surface-page);
+}
+
+/* Styling the active button through aria-pressed keeps the
+   look and the screen reader state in sync automatically */
+.toggle-btn[aria-pressed="true"] {
+    background-color: var(--brand);
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+/* Visible focus ring for keyboard users */
+.toggle-btn:focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: -2px;
+}
+
+/* Highcharts needs a height, otherwise it picks its own */
+.chart {
+    height: 360px;
+    margin-top: 24px;
+}
+
+
+
+/* ============================================================
+   4. STUDENTS TABLE
+   ============================================================ */
+
+.students-table {
+    width: 100%;
+    margin-top: 16px;
+    border-collapse: collapse;   /* one shared line between cells instead of double borders */
+    text-align: left;
+}
+
+.students-table th {
+    padding: 12px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border-strong);
+}
+
+.students-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+}
+
+.students-table tbody tr:hover {
+    background-color: var(--surface-page);
+}
+
+/* --- Progress bar: bar and percentage side by side --- */
+.progress-bar {
+    display: inline-block;
+    width: 120px;
+    height: 8px;
+    margin-right: 8px;
+    vertical-align: middle;
+    background-color: var(--surface-band);
+    border-radius: 999px;
+    overflow: hidden;            /* keeps the fill inside the rounded ends */
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--brand);
+    border-radius: 999px;
+}
+
+.progress-text {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* --- View button --- */
+.view-btn {
+    padding: 6px 16px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--brand);
+    background-color: var(--surface-card);
+    border: 1px solid var(--brand);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.view-btn:hover {
+    background-color: var(--surface-page);
+}
+
+.view-btn:focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+}
+
+/* --- Mobile: let the table scroll sideways instead of squeezing --- */
+@media (max-width: 700px) {
+    .admin-section {
+        overflow-x: auto;
+    }
+}
+
+
+/* ============================================================
+   5. VIEW SWITCH (header)
+   ============================================================ */
+
+.view-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    background-color: var(--brand-deep);
+    color: #FFFFFF;
+    border-radius: 999px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.15s;
+}
+
+.view-switch:hover {
+    background-color: var(--brand);
+}
+
+.view-switch-hint {
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.8;
+}

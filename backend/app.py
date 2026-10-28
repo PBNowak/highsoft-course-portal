@@ -295,5 +295,145 @@ def get_student_courses(student_id):
 
     finally:
         connection.close()
+        
+
+# ============================================================
+# ADMIN API (read-only)
+# Only students who have given consent are counted (GDPR).
+# Started course = at least one completed lesson.
+# Completion % = completed lessons / total lessons in the course.
+# ============================================================
+
+
+# --- Admin: progress per course (used by the Top courses chart) ---
+@app.route("/api/admin/courses")
+def get_admin_courses():
+    connection = get_connection()
+
+    try:
+        rows = connection.execute(
+            """
+            SELECT
+                c.id AS course_id,
+                c.title,
+                -- COUNT ignores NULL, so courses nobody has started get 0
+                COUNT(p.student_id) AS students_started,
+                -- Average of each student's %. COALESCE turns "no value" into 0
+                COALESCE(ROUND(AVG(p.completed * 100.0 / t.total_lessons)), 0) AS avg_completion
+            FROM courses c
+
+            -- t = total number of lessons per course.
+            -- Normal JOIN: courses without lessons are left out.
+            JOIN (
+                SELECT course_id, COUNT(*) AS total_lessons
+                FROM lessons
+                GROUP BY course_id
+            ) t ON t.course_id = c.id
+
+            -- p = how many lessons each consenting student has completed per course.
+            -- LEFT JOIN: keep the course even if no student has started it.
+            LEFT JOIN (
+                SELECT l.course_id, lc.student_id, COUNT(*) AS completed
+                FROM lesson_completions lc
+                JOIN lessons l ON l.id = lc.lesson_id
+                JOIN progress_consents pc
+                    ON pc.student_id = lc.student_id
+                    AND pc.consent_given = 1
+                GROUP BY l.course_id, lc.student_id
+            ) p ON p.course_id = c.id
+
+            -- One row per course
+            GROUP BY c.id, c.title
+            ORDER BY c.id
+            """
+        ).fetchall()
+
+        # sqlite3.Row can't be sent as JSON directly,
+        # so we build normal dictionaries
+        courses = []
+
+        for row in rows:
+            courses.append({
+                "course_id": row["course_id"],
+                "title": row["title"],
+                "students_started": row["students_started"],
+                # ROUND gives 70.0, int() makes it 70
+                "avg_completion": int(row["avg_completion"])
+            })
+
+        return jsonify(courses)
+
+    finally:
+        # finally always runs, even after return or an error,
+        # so the database connection is never left open
+        connection.close()
+
+
+# --- Admin: progress per student (used by the Students table) ---
+@app.route("/api/admin/students")
+def get_admin_students():
+    connection = get_connection()
+
+    try:
+        rows = connection.execute(
+            """
+            SELECT
+                s.id AS student_id,
+                s.name,
+                COUNT(p.course_id) AS courses_started,
+                COALESCE(ROUND(AVG(p.completed * 100.0 / t.total_lessons)), 0) AS overall_progress,
+                -- Latest completion across all courses = last active
+                MAX(p.last_completed) AS last_active
+            FROM students s
+
+            -- Normal JOIN on consent: students without consent disappear completely
+            JOIN progress_consents pc
+                ON pc.student_id = s.id
+                AND pc.consent_given = 1
+
+            -- p = completed lessons and latest completion per student per course.
+            -- LEFT JOIN: a student who has consented but not started still shows (0%)
+            LEFT JOIN (
+                SELECT
+                    lc.student_id,
+                    l.course_id,
+                    COUNT(*) AS completed,
+                    MAX(lc.completed_at) AS last_completed
+                FROM lesson_completions lc
+                JOIN lessons l ON l.id = lc.lesson_id
+                GROUP BY lc.student_id, l.course_id
+            ) p ON p.student_id = s.id
+
+            -- t = total lessons per course, to calculate the %
+            LEFT JOIN (
+                SELECT course_id, COUNT(*) AS total_lessons
+                FROM lessons
+                GROUP BY course_id
+            ) t ON t.course_id = p.course_id
+
+            -- One row per student, highest progress first
+            GROUP BY s.id, s.name
+            ORDER BY overall_progress DESC
+            """
+        ).fetchall()
+
+        students = []
+
+        for row in rows:
+            students.append({
+                "student_id": row["student_id"],
+                "name": row["name"],
+                "courses_started": row["courses_started"],
+                "overall_progress": int(row["overall_progress"]),
+                "last_active": row["last_active"]
+            })
+
+        return jsonify(students)
+
+    finally:
+        connection.close()
+
+if __name__ == "__main__":
+    app.run(debug=True)
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview | Highsoft Course Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- admin.css must come after style.css so admin rules win if they collide -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="nav-logo">
+                <img src="logos/highcharts-logo-dark.png" alt="Highcharts home">
+            </a>
+
+             <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="admin.html" aria-current="page">Overview</a></li>
+                <!-- # jumps to the element with that id on the same page -->
+                <li><a href="#students-heading">Students</a></li>
+                <li><a href="courses.html">Courses</a></li>
+            </ul>
+
+            <!-- Switch between admin and student view (instead of a login system, see report) -->
+            <a href="courses.html" class="view-switch">
+                Admin view
+                <span class="view-switch-hint">Switch to student</span>
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Overview</h1>
+        <p>Course progress and student insight. Only students who have given consent are included.</p>
+
+        <!-- Key numbers. The ids are filled in by admin.js -->
+        <section class="admin-stats" aria-label="Key numbers">
+            <div class="stat-card">
+                <p class="stat-number" id="stat-students">–</p>
+                <p class="stat-label">Students</p>
+            </div>
+
+            <div class="stat-card">
+                <p class="stat-number" id="stat-active-courses">–</p>
+                <p class="stat-label">Active courses</p>
+            </div>
+
+            <div class="stat-card">
+                <p class="stat-number" id="stat-avg-completion">–</p>
+                <p class="stat-label">Avg. completion</p>
+            </div>
+        </section>
+        
+        <!-- Top courses chart -->
+        <section class="admin-section" aria-labelledby="top-courses-heading">
+            <div class="section-header">
+                <h2 id="top-courses-heading">Top courses</h2>
+
+                <!-- aria-pressed tells screen readers which button is active.
+                     data-mode is our own attribute, read by admin.js -->
+                <div class="chart-toggle" role="group" aria-label="Sort top courses">
+                    <button type="button" class="toggle-btn" data-mode="started" aria-pressed="true">Most started</button>
+                    <button type="button" class="toggle-btn" data-mode="highest" aria-pressed="false">Highest completion</button>
+                    <button type="button" class="toggle-btn" data-mode="lowest" aria-pressed="false">Lowest completion</button>
+                </div>
+            </div>
+
+            <!-- Highcharts draws the chart inside this div -->
+            <div id="courses-chart" class="chart"></div>
+        </section>
+
+        <section class="admin-section" aria-labelledby="students-heading">
+            <h2 id="students-heading">Students</h2>
+
+            <table class="students-table">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Courses</th>
+                        <th scope="col">Progress</th>
+                        <th scope="col">Last active</th>
+                        <th scope="col"><span class="visually-hidden">Actions</span></th>
+                    </tr>
+                </thead>
+                <!-- Rows are added by admin.js -->
+                <tbody id="students-table-body"></tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>Highsoft Course Portal</h2>
+                <p>Learn, practise and grow your data visualisation skills.</p>
+            </div>
+
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <a href="index.html">Home</a>
+                <a href="courses.html">Courses</a>
+                <a href="admin.html">Overview</a>
+            </nav>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Highsoft Course Portal. Student project prototype.</p>
+        </div>
+    </footer>
+
+    <!-- defer: runs after the HTML is loaded, so the ids above exist -->
+    <script src="js/admin.js" defer></script>
+       
+    
+    <!-- Highcharts library + accessibility module (screen reader and keyboard support).
+         defer keeps the order, so admin.js runs after Highcharts has loaded -->
+    <script src="https://code.highcharts.com/highcharts.js" defer></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js" defer></script>
+</body>
+</html>
