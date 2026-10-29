@@ -280,3 +280,47 @@ lessons.forEach((item, index) => {
             "Unable to load lesson";
     }
 });
+// Interactive chart example
+Highcharts.chart("chart-example", {
+    chart: {
+        type: "column"
+    },
+    title: {
+        text: "Monthly Website Visitors"
+    },
+    xAxis: {
+        categories: ["January", "February", "March", "April"]
+    },
+    yAxis: {
+        title: {
+            text: "Number of visitors"
+        }
+    },
+    series: [{
+        name: "Visitors",
+        data: [120, 180, 150, 230]
+    }],
+    credits: {
+        enabled: false
+    }
+});
+// Check the student's practice answer
+const checkPracticeButton = document.getElementById("check-practice-answer");
+
+if (checkPracticeButton) {
+    checkPracticeButton.addEventListener("click", () => {
+        const selectedAnswer = document.querySelector(
+            'input[name="practice-answer"]:checked'
+        );
+
+        const feedback = document.getElementById("practice-feedback");
+
+        if (!selectedAnswer) {
+            feedback.textContent = "Please select an answer first.";
+        } else if (selectedAnswer.value === "April") {
+            feedback.textContent = "Correct! April had the most visitors. 🎉";
+        } else {
+            feedback.textContent = "Not quite! Try looking at the tallest bar.";
+        }
+    });
+}

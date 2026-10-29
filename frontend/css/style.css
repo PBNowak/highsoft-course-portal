@@ -713,3 +713,73 @@ header nav a:hover {
     outline: 3px solid #2458c6;
     outline-offset: 3px;
 }
+/* Lesson help section */
+.lesson-help {
+    margin-top: 24px;
+    padding: 24px;
+    background-color: #f5f7fb;
+    border: 1px solid #e1e5ee;
+    border-radius: 12px;
+}
+
+.lesson-help h2 {
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+.lesson-help p {
+    line-height: 1.6;
+}
+
+.lesson-help ul {
+    padding-left: 24px;
+    line-height: 1.8;
+}
+/* Lesson practice section */
+.lesson-practice {
+    margin-top: 24px;
+    padding: 24px;
+    background-color: #f5f7fb;
+    border: 1px solid #e1e5ee;
+    border-radius: 12px;
+}
+
+.lesson-practice h2 {
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+.practice-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.practice-options label {
+    cursor: pointer;
+}
+
+#check-practice-answer {
+    background-color: #30366f;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    cursor: pointer;
+    font: inherit;
+}
+
+#check-practice-answer:hover {
+    background-color: #454f9c;
+}
+
+#check-practice-answer:focus-visible {
+    outline: 3px solid #6478d8;
+    outline-offset: 3px;
+}
+
+#practice-feedback {
+    margin-bottom: 0;
+    line-height: 1.6;
+}
