@@ -71,13 +71,39 @@
                 <!-- Practice area -->
                 <section class="lesson-practice">
                     <h2>Practice</h2>
-                    <div id="practice-content"></div>
+                    <div id="practice-content">
+    <p><strong>Look at the chart above and answer:</strong></p>
+    <p>Which month had the highest number of website visitors?</p>
+
+    <div class="practice-options">
+        <label><input type="radio" name="practice-answer" value="January"> January</label>
+        <label><input type="radio" name="practice-answer" value="February"> February</label>
+        <label><input type="radio" name="practice-answer" value="March"> March</label>
+        <label><input type="radio" name="practice-answer" value="April"> April</label>
+    </div>
+
+    <button type="button" id="check-practice-answer">Check answer</button>
+    <p id="practice-feedback" aria-live="polite"></p>
+</div>
                 </section>
 
                 <!-- Help -->
                 <section class="lesson-help">
                     <h2>Need help?</h2>
-                    <div id="lesson-help-content"></div>
+                    <div id="lesson-help-content">
+    <p>Stuck on something? Here are a few things you can try:</p>
+
+    <ul>
+        <li>Read the lesson instructions again.</li>
+        <li>Go back to the previous lesson if you need a reminder.</li>
+        <li>Try the practice activity one more time.</li>
+    </ul>
+
+    <p>
+        Still need help? You can contact your course instructor
+        for further guidance.
+    </p>
+</div>
                 </section>
                 <!-- Progress tracking consent -->
 <section class="progress-consent">
@@ -145,6 +171,8 @@
         <p>&copy; 2026 Highsoft Course Portal. Student project prototype.</p>
     </div>
 </footer>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
 
     <script src="js/lesson.js" defer></script>
 </body>

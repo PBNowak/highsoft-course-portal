@@ -187,15 +187,15 @@ The Flask API currently provides nine sample courses. Chart types are stored in 
 - Lesson titles and durations are displayed in a numbered list.
 - The lesson count updates automatically based on the selected course.
 - Courses without lessons display a "Lessons coming soon" message.
-- The Start course button is present but remains disabled until lesson navigation is implemented.
+- The Start course button opens the first lesson when lessons are available. Courses without lessons have the button disabled.
 
  ### Lesson Page
 
 - A new `frontend/lesson.html` page has been created based on the low-fidelity wireframe.
 - The basic HTML structure includes lesson navigation, a progress indicator, lesson content, a chart example area, a practice section, and help.
-- Previous and Next buttons are included but currently disabled.
-- The page is not yet connected to the Flask API or SQLite database.
-- Dynamic lesson content, interactive exercises, and progress tracking will be implemented in future development.
+- Previous and Next buttons allow students to navigate between lessons.
+- Lesson titles and content are loaded dynamically from the Flask API and SQLite database.
+- Students can complete lessons, track their progress, and practise using an interactive chart and quiz.
   
   ### Student Progress and Consent System
 
@@ -243,7 +243,7 @@ The current implementation uses demo student Kari (ID 1).
 
 Progress is only saved when the student has given consent.
 
-The lesson page is still under development. Chart examples, practice activities, contextual help, and final styling will be added later.
+The lesson page now includes an interactive Highcharts column chart, a multiple-choice practice activity with immediate feedback, and a contextual help section. Further improvements will include lesson-specific exercises, accessibility refinements, and final styling based on the Highcharts design tokens.
 
 ### Navigation and UI Improvements
 
@@ -298,6 +298,6 @@ If the Flask server crashes when it restarts automatically (WinError 10038), sta
 - Show student details in the admin dashboard.
 - Build the landing page and student profile page.
 - Store course and lesson duration as minutes for accurate sorting and filtering.
-- Develop interactive lesson exercises and chart examples using Highcharts.
+- Expand the interactive lesson exercises and Highcharts examples with lesson-specific content.
 - Update the Figma design to match the implemented solution.
 - Continue improving accessibility and responsive design.
