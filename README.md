@@ -257,17 +257,47 @@ The lesson page is still under development. Chart examples, practice activities,
 - Fixed course ID parameters so course details load correctly.
 - Added navigation from lessons back to their course details.
 - The Start course button is enabled only when lessons are available.
+
+## Admin Dashboard
+
+The admin dashboard (`admin.html`) gives Highsoft an overview of how the courses are used. It is read-only.
+
+Implemented features:
+- Key numbers: students, courses started out of all courses, and average completion
+- Top courses chart made with Highcharts, sortable by most started, highest completion and lowest completion
+- Students table with courses started, progress bar and last active date
+- Admin navigation with a switch to the student view
+
+**New API endpoints:**
+- `GET /api/admin/courses` — returns how many students have started each course and their average completion.
+- `GET /api/admin/students` — returns courses started, overall progress and last active date for each student.
+
+**Calculation rules:**
+- A course counts as started when a student has completed at least one lesson in it.
+- Completion % = completed lessons / total lessons in the course.
+- Only students who have given consent are included.
+
+**Demo data:**
+- `seed.sql` includes an extra course (Your First Bar Chart), lessons for more courses, and progress for Emma and Jonas.
+- Sofie has not given consent, so she is not shown in the admin dashboard.
+- Kari starts without progress, so the student flow can be demonstrated live.
+
+**Running the server on Windows:**
+If the Flask server crashes when it restarts automatically (WinError 10038), start it without auto-restart:
+
+    flask --app backend/app.py run
+
+**Not done yet:**
+- Student details when clicking "View"
+- Switch from the student pages to the admin view
    
 ### Next Steps
 
-- Complete the Course Overview and Course Detail page styling based on the Figma designs.
-- Connect the Lesson page to the Flask API and SQLite database.
-- Display dynamic lesson content and implement Previous/Next lesson navigation.
-- Add learning outcomes and prerequisites for individual courses.
+- Move the consent checkbox to the Course Detail page, before "Start course".
+- Add the student/admin switch to all pages.
+- Show student details in the admin dashboard.
+- Build the landing page and student profile page.
+- Store course and lesson duration as minutes for accurate sorting and filtering.
 - Develop interactive lesson exercises and chart examples using Highcharts.
-- Add database support for course enrolments.
-- Connect the student-facing lesson completion and progress tracking interface to the existing Flask API.
-- Integrate student progress data into the admin dashboard.
-- Use Highcharts to visualise learner progress.
-- Explore basic admin functionality for managing courses.
+- Update the Figma design to match the implemented solution.
 - Continue improving accessibility and responsive design.
