@@ -124,6 +124,7 @@ function showStudentsTable(students) {
         viewButton.className = "view-btn";
         viewButton.textContent = "View";
         viewButton.dataset.studentId = student.student_id;
+        viewButton.dataset.studentName = student.name;
         // Screen readers hear "View Jonas" instead of only "View"
         viewButton.setAttribute("aria-label", `View ${student.name}`);
         actionCell.appendChild(viewButton);
@@ -222,15 +223,23 @@ document.querySelectorAll(".toggle-btn").forEach(button => {
 
 // --- Student details ---
 // Fetches one student's courses and progress
-async function showStudentDetails(studentId) {
+async function showStudentDetails(studentId, studentName) {
     const response = await fetch(`/api/students/${studentId}/courses`);
     const data = await response.json();
 
     const panel = document.getElementById("student-details");
     const list = document.getElementById("student-details-list");
     list.innerHTML = "";   // clear the previous student
+    document.getElementById("student-details-heading").textContent = studentName;
 
-    // One list item per course, e.g. "Line charts: 50%"
+        // Empty state: the student has not started any courses yet
+    if (data.courses.length === 0) {
+        const item = document.createElement("li");
+        item.textContent = "No courses started yet.";
+        list.appendChild(item);
+    }
+
+        // One list item per course, e.g. "Line charts: 50%"
     data.courses.forEach(course => {
         const item = document.createElement("li");
         item.textContent = `${course.title}: ${course.progress_percent}%`;
@@ -246,7 +255,6 @@ document.getElementById("students-table-body").addEventListener("click", event =
     const button = event.target.closest(".view-btn");
     if (!button) return;   // clicked somewhere else in the table
 
-    showStudentDetails(button.dataset.studentId);
-});
+    showStudentDetails(button.dataset.studentId, button.dataset.studentName);});
 
 loadAdminData();
