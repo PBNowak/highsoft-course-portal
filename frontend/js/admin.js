@@ -13,7 +13,7 @@ let adminCourses = [];
 // --- Load data ---
 async function loadAdminData() {
     try {
-                // Promise.all starts all three requests at the same time
+        // Promise.all starts all three requests at the same time
         // and waits until all have answered.
         const [coursesResponse, studentsResponse, allCoursesResponse] = await Promise.all([
             fetch("/api/admin/courses"),
@@ -124,6 +124,7 @@ function showStudentsTable(students) {
         viewButton.className = "view-btn";
         viewButton.textContent = "View";
         viewButton.dataset.studentId = student.student_id;
+        viewButton.dataset.studentName = student.name;
         // Screen readers hear "View Jonas" instead of only "View"
         viewButton.setAttribute("aria-label", `View ${student.name}`);
         actionCell.appendChild(viewButton);
@@ -220,5 +221,40 @@ document.querySelectorAll(".toggle-btn").forEach(button => {
     });
 });
 
+// --- Student details ---
+// Fetches one student's courses and progress
+async function showStudentDetails(studentId, studentName) {
+    const response = await fetch(`/api/students/${studentId}/courses`);
+    const data = await response.json();
+
+    const panel = document.getElementById("student-details");
+    const list = document.getElementById("student-details-list");
+    list.innerHTML = "";   // clear the previous student
+    document.getElementById("student-details-heading").textContent = studentName;
+
+        // Empty state: the student has not started any courses yet
+    if (data.courses.length === 0) {
+        const item = document.createElement("li");
+        item.textContent = "No courses started yet.";
+        list.appendChild(item);
+    }
+
+        // One list item per course, e.g. "Line charts: 50%"
+    data.courses.forEach(course => {
+        const item = document.createElement("li");
+        item.textContent = `${course.title}: ${course.progress_percent}%`;
+        list.appendChild(item);
+    });
+
+    panel.hidden = false;   // show the panel
+    }
+
+
+// One listener on the table body catches clicks on every View button
+document.getElementById("students-table-body").addEventListener("click", event => {
+    const button = event.target.closest(".view-btn");
+    if (!button) return;   // clicked somewhere else in the table
+
+    showStudentDetails(button.dataset.studentId, button.dataset.studentName);});
 
 loadAdminData();
