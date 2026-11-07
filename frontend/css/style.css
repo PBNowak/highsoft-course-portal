@@ -1295,3 +1295,91 @@ align-items: center;
     line-height: 1.5;
     resize: vertical;
 }
+
+/* Course Completed page */
+.completion-page {
+    min-height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px 24px;
+    text-align: center;
+}
+
+.completion-content {
+    width: 100%;
+    max-width: 600px;
+}
+
+.completion-icon {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 24px;
+    border: 7px solid #10b981;
+    border-radius: 50%;
+    background-color: #d1fae5;
+    color: #047857;
+    font-size: 72px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.completion-content h1 {
+    margin-bottom: 12px;
+    color: var(--brand-deep);
+}
+
+.completion-confirmation {
+    margin: 24px auto;
+    padding: 12px 20px;
+    border: 1px solid var(--border-strong);
+    border-radius: 30px;
+}
+
+.completion-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 32px 0 64px;
+}
+
+.completion-stats div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.completion-stats strong {
+    font-size: 24px;
+    color: var(--brand-deep);
+}
+
+.completion-stats span {
+    color: var(--muted);
+}
+
+.completion-actions {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.completion-primary-btn,
+.completion-secondary-btn {
+    padding: 12px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.completion-primary-btn {
+    background-color: var(--brand);
+    color: white;
+}
+
+.completion-secondary-btn {
+    border: 1px solid var(--brand);
+    color: var(--brand);
+}
