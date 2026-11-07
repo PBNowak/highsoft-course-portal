@@ -69,6 +69,34 @@
                 </section>
 
                 <!-- Practice area -->
+                 <!-- Practice and Notes tabs -->
+<div class="lesson-tabs">
+    <button type="button" class="lesson-tab active" id="practice-tab">
+        Practice
+    </button>
+
+    <button type="button" class="lesson-tab" id="notes-tab">
+        Notes
+    </button>
+    <details class="lesson-help">
+    <summary>Need help?</summary>
+                    <div id="lesson-help-content">
+    <p>Stuck on something? Here are a few things you can try:</p>
+
+    <ul>
+        <li>Read the lesson instructions again.</li>
+        <li>Go back to the previous lesson if you need a reminder.</li>
+        <li>Try the practice activity one more time.</li>
+    </ul>
+
+    <p>
+        Still need help? You can contact your course instructor
+        for further guidance.
+    </p>
+</div>
+                
+                </details>
+</div>
                 <section class="lesson-practice">
                     <h2>Practice</h2>
                     <div id="practice-content">
@@ -86,25 +114,19 @@
     <p id="practice-feedback" aria-live="polite"></p>
 </div>
                 </section>
+                <!-- Notes panel -->
+<section class="lesson-notes" id="notes-panel" hidden>
+    <h2>My notes</h2>
+    <label for="lesson-notes-input">Write your lesson notes here:</label>
+    <textarea
+        id="lesson-notes-input"
+        rows="5"
+        placeholder="Write your notes..."
+    ></textarea>
+</section>
 
                 <!-- Help -->
-                <section class="lesson-help">
-                    <h2>Need help?</h2>
-                    <div id="lesson-help-content">
-    <p>Stuck on something? Here are a few things you can try:</p>
-
-    <ul>
-        <li>Read the lesson instructions again.</li>
-        <li>Go back to the previous lesson if you need a reminder.</li>
-        <li>Try the practice activity one more time.</li>
-    </ul>
-
-    <p>
-        Still need help? You can contact your course instructor
-        for further guidance.
-    </p>
-</div>
-                </section>
+                
                 <!-- Progress tracking consent -->
 <section class="progress-consent">
     <h2>Save your learning progress</h2>
@@ -125,28 +147,22 @@
 
     <p id="consent-message" role="status"></p>
 </section>
-                <!-- Lesson completion -->
-<section class="lesson-completion">
-    <h2>Lesson progress</h2>
-
-    <p id="completion-message" role="status">
-        Complete this lesson when you are ready.
-    </p>
+                <!-- Lesson completion feedback -->
+<p id="completion-message" role="status"></p>
+                <!-- Lesson navigation -->
+                <nav class="lesson-buttons" aria-label="Lesson navigation">
+    <button type="button" id="previous-lesson" disabled>
+        ← Previous
+    </button>
 
     <button type="button" id="complete-lesson">
         Mark lesson as completed
     </button>
-</section>
-                <!-- Lesson navigation -->
-                <nav class="lesson-buttons" aria-label="Lesson navigation">
-                    <button type="button" id="previous-lesson" disabled>
-                        ← Previous
-                    </button>
 
-                    <button type="button" id="next-lesson" disabled>
-                        Next →
-                    </button>
-                </nav>
+    <button type="button" id="next-lesson" disabled>
+        Next →
+    </button>
+</nav>
 
             </article>
         </div>
