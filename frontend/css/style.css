@@ -956,3 +956,342 @@ align-items: center;
     color: var(--muted);
     margin: 0 0 20px;
 }
+
+/* Lesson page - horizontal progress header */
+.lesson-header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 48px;
+}
+
+.lesson-header .back-link {
+    margin-right: auto;
+    white-space: nowrap;
+}
+
+.lesson-header #lesson-number {
+    margin: 0;
+    white-space: nowrap;
+    font-weight: 600;
+    color: var(--brand-deep);
+}
+
+.lesson-header #lesson-progress {
+    width: 280px;
+    height: 8px;
+}
+
+.lesson-header #progress-percentage {
+    font-weight: 600;
+    color: var(--brand-deep);
+    white-space: nowrap;
+}
+
+/* Lesson page - sidebar styling */
+.lesson-sidebar {
+    background: transparent;
+    border-radius: 0;
+    border-right: 1px solid var(--border-strong);
+    padding: 24px 32px 24px 0;
+}
+
+/* Lesson sidebar - navigation circles */
+#lesson-navigation {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 24px;
+}
+
+#lesson-navigation li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 20px;
+}
+
+#lesson-navigation li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 8px;
+    height: 8px;
+    border: 1px solid var(--brand-deep);
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+/* Current lesson - filled circle */
+#lesson-navigation li:has(a.active)::before {
+    background-color: var(--brand-deep);
+    border-color: var(--brand-deep);
+}
+
+/* Completed lesson - green circle with checkmark */
+#lesson-navigation li:has(a.completed)::before {
+    content: "✓";
+    background-color: var(--success-bg);
+    border-color: var(--success-ink);
+    color: var(--success-ink);
+    font-size: 9px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 8px;
+}
+
+/* Current lesson takes priority if also completed */
+#lesson-navigation li:has(a.active)::before {
+    content: "";
+    background-color: var(--brand-deep);
+    border-color: var(--brand-deep);
+}
+
+/* Lesson sidebar - heading divider */
+.lesson-sidebar h2 {
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--brand-deep);
+    border-bottom: 1px solid var(--border-strong);
+    padding-bottom: 24px;
+    margin-bottom: 28px;
+}
+
+/* Lesson page - content headings */
+.lesson-main h1 {
+    font-size: 32px;
+    line-height: 1.2;
+    color: var(--brand-deep);
+    margin-top: 0;
+    margin-bottom: 24px;
+}
+
+.lesson-content h2,
+.lesson-example h2 {
+    font-size: 18px;
+    color: var(--brand-deep);
+    margin-top: 24px;
+    margin-bottom: 16px;
+}
+
+.lesson-content p {
+    line-height: 1.6;
+    max-width: 650px;
+}
+
+/* Lesson page - compact practice section */
+.lesson-practice {
+    padding: 24px;
+    margin-top: 24px;
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+}
+
+.lesson-practice h2 {
+    font-size: 18px;
+    color: var(--brand-deep);
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+.lesson-practice p {
+    margin-bottom: 12px;
+}
+
+/* Lesson page - expandable help */
+.lesson-help {
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.lesson-help summary {
+    display: inline-block;
+    cursor: pointer;
+    padding: 8px 16px;
+    border: 1px solid var(--border-strong);
+    border-radius: 4px;
+    color: var(--brand-deep);
+    font-size: 14px;
+    font-weight: 600;
+    list-style: none;
+}
+
+.lesson-help summary:hover {
+    background-color: var(--surface-card);
+}
+
+.lesson-help[open] {
+    background-color: var(--surface-card);
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+/* Hide duplicate consent section on Lesson page */
+.lesson-page .progress-consent {
+    display: none;
+}
+
+/* Lesson page - Practice and Notes tabs */
+.lesson-tabs {
+    display: flex;
+    gap: 0;
+    margin-top: 32px;
+    border-bottom: 1px solid var(--border-strong);
+}
+
+.lesson-tab {
+    background: transparent;
+    border: none;
+    padding: 12px 28px;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--muted);
+    cursor: pointer;
+}
+
+.lesson-tab.active {
+    color: var(--brand-deep);
+    font-weight: 600;
+    border-bottom: 3px solid var(--brand);
+}
+
+.lesson-tab:hover {
+    color: var(--brand-deep);
+}
+
+/* Align Help to the right of Practice / Notes */
+.lesson-tabs {
+    align-items: center;
+}
+
+.lesson-tabs .lesson-help {
+    margin: 0 0 0 auto;
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+.lesson-tabs .lesson-help summary {
+    font-size: 13px;
+    padding: 8px 14px;
+    white-space: nowrap;
+}
+
+/* Keep Help in place when expanded */
+.lesson-tabs {
+    position: relative;
+}
+
+.lesson-tabs .lesson-help {
+    position: relative;
+}
+
+.lesson-tabs .lesson-help[open] {
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+/* Floating Help panel */
+.lesson-tabs .lesson-help[open] > :not(summary) {
+    position: relative;
+}
+
+/* Position expanded Help as a floating panel */
+.lesson-tabs .lesson-help[open] {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 300px;
+    background-color: var(--surface-card);
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    padding: 16px;
+    z-index: 10;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Lesson page - connect tabs and practice panel */
+.lesson-tabs {
+    margin-top: 24px;
+}
+
+.lesson-practice {
+    margin-top: 0;
+    border-radius: 0 0 8px 8px;
+}
+
+.lesson-notes {
+    margin-top: 0;
+    padding: 24px;
+    border: 1px solid var(--border-strong);
+    border-radius: 0 0 8px 8px;
+}
+
+/* Keep the inactive panel hidden */
+.lesson-practice[hidden],
+.lesson-notes[hidden] {
+    display: none;
+}
+
+/* Lesson page - consistent purple buttons */
+.lesson-page #check-practice-answer,
+.lesson-page #complete-lesson,
+.lesson-page #next-lesson,
+.lesson-page #previous-lesson {
+    background-color: var(--brand);
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+/* Hover effect */
+.lesson-page #check-practice-answer:hover:not(:disabled),
+.lesson-page #complete-lesson:hover:not(:disabled),
+.lesson-page #next-lesson:hover:not(:disabled),
+.lesson-page #previous-lesson:hover:not(:disabled) {
+    background-color: var(--brand-hover);
+}
+
+/* Disabled buttons */
+.lesson-page button:disabled {
+    background-color: #d9dce5;
+    color: #788196;
+    cursor: not-allowed;
+}
+
+/* Lesson page - Notes panel */
+.lesson-notes {
+    padding: 24px;
+    background-color: var(--surface-card);
+}
+
+.lesson-notes h2 {
+    font-size: 18px;
+    color: var(--brand-deep);
+    margin: 0 0 16px;
+}
+
+.lesson-notes label {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+#lesson-notes-input {
+    display: block;
+    width: 100%;
+    min-height: 180px;
+    padding: 16px;
+    box-sizing: border-box;
+    border: 1px solid var(--border-strong);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.5;
+    resize: vertical;
+}
