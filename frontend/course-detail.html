@@ -36,26 +36,40 @@
 </header>
     <main>
         <a href="courses.html" class="back-link">← Back to courses</a>
+    <div class="course-detail-top">
     <div class="course-detail-image">
-    <img
-        src="https://placehold.co/400x300?text=Course+Image"
-        alt=""
-    >
-</div>
-        <h1 id="course-title">Loading course...</h1>
+        <img
+            src="https://placehold.co/400x300?text=Course+Image"
+            alt=""
+        >
+    </div>
 
-    <p id="course-level"></p>
+    <div class="course-detail-info">
+        <p id="course-level"></p>
+<h1 id="course-title">Loading course...</h1>
+<p id="course-summary"></p>
+        <div class="course-detail-meta">
     <p id="course-duration"></p>
     <p id="course-lesson-count"></p>
+</div>
+    </div>
+</div>
+    <div class="course-detail-sections">
     <section class="course-learning">
-    <h2>What you'll learn</h2>
-    <ul id="learning-outcomes">
-    </ul>
-</section>
-<section class="course-about">
-    <h2>About this course</h2>
-    <p id="course-about-text"></p>
-</section>
+        <h2>What you'll learn</h2>
+        <ul id="learning-outcomes">
+    <li>Understand the basics of Highcharts</li>
+    <li>Set up your first chart</li>
+    <li>Add and customise chart data</li>
+    <li>Create a simple interactive chart</li>
+</ul>
+    </section>
+
+    <section class="course-about">
+        <h2>About this course</h2>
+        <p id="course-about-text"></p>
+    </section>
+</div>
 <section class="course-content">
     <h2>Course content</h2>
 
@@ -64,6 +78,13 @@
     <p id="lessons-status">Lessons coming soon.</p>
 </section>
 <div class="course-actions">
+    <label class="course-consent">
+    <input type="checkbox" id="course-consent">
+    I agree to let the portal store my course progress
+    so I can track it and see how my courses are used.
+    
+</label>
+<p id="course-consent-message" role="status"></p>
     <button
         type="button"
         id="start-course-btn"

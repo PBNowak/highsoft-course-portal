@@ -783,3 +783,176 @@ header nav a:hover {
     margin-bottom: 0;
     line-height: 1.6;
 }
+
+/* Course detail - top section */
+.course-detail-top {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-top: 32px;
+}
+
+.course-detail-image img {
+    width: 350px;
+    max-width: 100%;
+    height: auto;
+}
+
+.course-detail-info {
+    flex: 1;
+}
+
+/* Course detail title */
+.course-detail-info h1 {
+    margin-top: 12px;
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+/* Course detail - level badge */
+.course-detail-info #course-level {
+    display: inline-block;
+    background-color: var(--success-bg);
+    color: var(--success-ink);
+    padding: 4px 20px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* Course detail - duration and lessons */
+.course-detail-meta {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-top: 20px;
+}
+
+.course-detail-meta p {
+    margin: 0;
+}
+
+/* Course detail - learning and about sections */
+.course-detail-sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.course-learning {
+    border-right: 1px solid var(--border-strong);
+    padding-right: 40px;
+}
+
+.course-detail-sections h2 {
+    color: var(--brand-deep);
+    margin-top: 0;
+}
+
+/* Course detail - learning outcomes */
+.course-learning li {
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+/* Course detail - content section */
+.course-content {
+    margin-top: 48px;
+}
+
+.course-content h2 {
+    text-align: center;
+    color: var(--brand-deep);
+    margin-bottom: 32px;
+}
+
+/* Course detail - lesson list */
+#lesson-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#lesson-list li {
+    background-color: var(--surface-card);
+    border: 1px solid var(--border-strong);
+    padding: 20px 24px;
+    margin-bottom: 12px;
+    border-radius: 4px;
+    display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+/* Course detail - lesson durations */
+#lesson-list li span:last-child {
+    color: var(--muted);
+    font-size: 14px;
+    white-space: nowrap;
+    margin-left: 16px;
+}
+
+/* Course detail - Start Course button */
+.course-actions {
+    text-align: center;
+    margin-top: 40px;
+}
+
+#start-course-btn {
+    background-color: var(--brand);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 14px 48px;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#start-course-btn:hover:not(:disabled) {
+    background-color: var(--brand-hover);
+}
+
+/* Course detail - short description */
+#course-summary {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 16px 0;
+    text-align: left;
+}
+
+/* Course detail - consent section */
+.course-actions {
+    max-width: 500px;
+    margin: 48px auto 0;
+    padding: 32px;
+    border: 1px dashed var(--border-strong);
+    text-align: center;
+}
+
+.course-consent {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    text-align: left;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 24px;
+}
+
+.course-consent input {
+    margin-top: 4px;
+    accent-color: var(--brand);
+}
+
+/* Course detail - consent feedback */
+#course-consent-message {
+    text-align: center;
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 20px;
+}
