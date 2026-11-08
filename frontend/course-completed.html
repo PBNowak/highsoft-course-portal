@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Completed | Highsoft Course Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+    <nav aria-label="Main navigation">
+        <a href="index.html" class="nav-logo">
+            <img src="logos/highcharts-logo-dark.png" alt="Highcharts home">
+        </a>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <a href="login.html" class="login-btn">
+            <span class="login-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                    <circle cx="12" cy="8" r="4"/>
+                    <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8z"/>
+                </svg>
+            </span>
+            Log in
+        </a>
+    </nav>
+</header>
+
+    <main class="completion-page" id="completion-page" hidden>
+        <div class="completion-content">
+
+            <div class="completion-icon" aria-hidden="true">✓</div>
+
+            <h1>Course completed!</h1>
+            <p>You finished <strong id="completed-course-title">your course</strong></p>
+
+            <p class="completion-confirmation">
+                Your course has been added to your completed courses.
+            </p>
+
+            <div class="completion-stats">
+    <div>
+        <strong id="completed-lessons">—</strong>
+        <span>lessons</span>
+    </div>
+
+    <div>
+        <strong id="completion-time">—</strong>
+        <span>estimated time</span>
+    </div>
+
+    <div>
+        <strong id="overall-progress">—</strong>
+        <span>overall</span>
+    </div>
+</div>
+
+            <div class="completion-actions">
+                <a href="courses.html" class="completion-secondary-btn">
+                    View my progress
+                </a>
+                <a href="courses.html" class="completion-primary-btn">
+                    Explore more courses
+                </a>
+            </div>
+
+        </div>
+    </main>
+    <footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-brand">
+            <h2>Highsoft Course Portal</h2>
+            <p>Learn, practise and grow your data visualisation skills.</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="courses.html">Courses</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 Highsoft Course Portal. Student project prototype.</p>
+    </div>
+</footer>
+<script src="js/course-completed.js"></script>
+
+</body>
+</html>
