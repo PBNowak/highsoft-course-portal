@@ -257,6 +257,49 @@ The lesson page now includes an interactive Highcharts column chart, a multiple-
 - Fixed course ID parameters so course details load correctly.
 - Added navigation from lessons back to their course details.
 - The Start course button is enabled only when lessons are available.
+  
+  
+### Recent Student Page Improvements
+
+**Course Detail**
+- Added a progress-tracking consent checkbox before starting a course.
+- Consent preferences are saved through the Flask API and SQLite.
+- The Start Course button is enabled only when consent is given and lessons are available.
+- Consent preferences remain saved when the page is refreshed.
+
+**Lesson Page**
+- Updated the layout to match the high-fidelity Figma design.
+- Added a lesson sidebar showing completed and active lessons.
+- Improved the progress indicator and lesson navigation.
+- Added Practice and Notes tabs.
+- Added contextual help within the lesson page.
+- Improved the styling of the completion and navigation buttons.
+- The Notes tab is currently a visual prototype; notes are not saved to the database.
+
+**Student Learning Flow**
+- Students can browse courses, view course details, give progress-tracking consent, start lessons, and save their progress.
+- Completing all lessons automatically opens the Course Completed page.
+- Course completion is verified against saved student progress before displaying the confirmation.
+
+  
+## Course Completed Page
+
+The Course Completed page (`frontend/course-completed.html`) has been implemented based on the Figma design.
+
+Implemented features:
+- Automatically opens when a student completes every lesson in a course.
+- Retrieves the course title and estimated duration from the Flask API.
+- Retrieves lesson completions from SQLite through the student progress API.
+- Displays the number of completed lessons (for example, 5/5).
+- Checks that all course lessons are completed before showing the page.
+- Redirects students back to Course Detail if the course is not fully completed.
+- Displays a confirmation message and navigation buttons.
+- Uses the same styling and IBM Plex Sans typography as the other student pages.
+
+The page currently uses demo student Kari (ID 1).
+
+The overall progress statistic will be connected to the Student Profile dashboard in a later development step. The "View my progress" button will also be linked to the Profile page once it is implemented.
+
 
 ## Admin Dashboard
 
@@ -293,7 +336,6 @@ If the Flask server crashes when it restarts automatically (WinError 10038), sta
    
 ### Next Steps
 
-- Move the consent checkbox to the Course Detail page, before "Start course".
 - Add the student/admin switch to all pages.
 - Show student details in the admin dashboard.
 - Build the landing page and student profile page.

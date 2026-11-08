@@ -1331,10 +1331,28 @@ align-items: center;
 }
 
 .completion-confirmation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    width: fit-content;
+    max-width: 100%;
     margin: 24px auto;
-    padding: 12px 20px;
-    border: 1px solid var(--border-strong);
-    border-radius: 30px;
+    padding: 12px 28px;
+    border: 1px solid #E5AC45;
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.completion-confirmation::before {
+    content: "";
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+    background-color: #D99A25;
+    border: 1px solid #946514;
+    border-radius: 50%;
 }
 
 .completion-stats {
@@ -1382,4 +1400,8 @@ align-items: center;
 .completion-secondary-btn {
     border: 1px solid var(--brand);
     color: var(--brand);
+}
+
+.completion-page[hidden] {
+    display: none;
 }

@@ -81,6 +81,12 @@ document.getElementById("lesson-progress").setAttribute(
 
 document.getElementById("progress-percentage").textContent =
     `${updatedPercent}%`;
+    // Open the completion page when all course lessons are finished
+if (courseLessons.length > 0 && completedCount === courseLessons.length) {
+    window.location.href =
+        `course-completed.html?course_id=${courseId}`;
+    return;
+}
 
     } catch (error) {
         console.error("Completion error:", error);
