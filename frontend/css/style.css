@@ -1756,3 +1756,58 @@ align-items: center;
     text-align: center;
 }
 
+/* Student navigation dropdown */
+.student-nav-dropdown {
+    position: relative;
+}
+
+.student-nav-toggle {
+    cursor: pointer;
+    font: inherit;
+    appearance: none;
+    border: none;
+    outline: none;
+}
+
+.student-nav-toggle:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
+}
+
+.student-nav-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    z-index: 1000;
+    min-width: 170px;
+    padding: 8px;
+    background: #ffffff;
+    border: 1px solid #e9e2f5;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(40, 25, 75, 0.12);
+}
+
+.student-nav-menu[hidden] {
+    display: none;
+}
+
+.student-nav-menu a,
+.student-nav-disabled {
+    display: block;
+    padding: 11px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    text-decoration: none;
+    color: #302547;
+}
+
+.student-nav-menu a:hover,
+.student-nav-menu a:focus-visible {
+    background: #f0ebff;
+    color: #6543c0;
+}
+
+.student-nav-disabled {
+    color: #9993a5;
+    cursor: not-allowed;
+}
