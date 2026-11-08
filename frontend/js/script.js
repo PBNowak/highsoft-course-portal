@@ -61,6 +61,7 @@ function sortCourses() {
                 level.textContent = course.level;
 
               const duration = document.createElement("p");
+              duration.className = "course-duration";
 duration.textContent = `~ ${course.duration}`;
 
                 // Badge + duration on one row

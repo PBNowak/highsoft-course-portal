@@ -64,7 +64,29 @@ if (lessonCount === 0 || completedCount < lessonCount) {
     );
     return;
 }
+// Get overall progress across all started courses
+const coursesResponse = await fetch(
+    `/api/students/${studentId}/courses`
+);
 
+if (!coursesResponse.ok) {
+    throw new Error("Could not load overall progress");
+}
+
+const coursesData = await coursesResponse.json();
+const startedCourses = coursesData.courses;
+
+const overallProgress = startedCourses.length > 0
+    ? Math.round(
+        startedCourses.reduce(
+            (total, course) => total + course.progress_percent,
+            0
+        ) / startedCourses.length
+    )
+    : 0;
+
+document.getElementById("overall-progress").textContent =
+    `${overallProgress}%`;
         // Display real progress
         document.getElementById("completed-lessons").textContent =
             `${completedCount}/${lessonCount}`;

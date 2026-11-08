@@ -56,7 +56,7 @@ VALUES
  INSERT OR IGNORE INTO students
 (id, name, is_demo)
 VALUES
-(1, 'Kari', 1);
+(1, 'Kari Nordkvinne', 1);
 INSERT OR IGNORE INTO students
 (id, name, is_demo)
 VALUES
