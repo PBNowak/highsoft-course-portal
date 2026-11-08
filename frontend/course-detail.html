@@ -23,15 +23,26 @@
             <li><a href="contact.html">Contact</a></li>
         </ul>
 
-        <a href="login.html" class="login-btn">
-            <span class="login-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                    <circle cx="12" cy="8" r="4"/>
-                    <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8z"/>
-                </svg>
-            </span>
-            Log in
-        </a>
+        <div class="student-nav-dropdown">
+    <button type="button"
+            class="login-btn student-nav-toggle"
+            aria-expanded="false"
+            aria-controls="student-nav-menu">
+        <span class="login-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8z"/>
+            </svg>
+        </span>
+        Log in
+    </button>
+
+    <div id="student-nav-menu" class="student-nav-menu" hidden>
+        <a href="login.html">Log in</a>
+        <a href="profile.html">My profile</a>
+        <span class="student-nav-disabled" aria-disabled="true">Settings</span>
+    </div>
+</div>
     </nav>
 </header>
     <main>
@@ -113,7 +124,7 @@
         <p>&copy; 2026 Highsoft Course Portal. Student project prototype.</p>
     </div>
 </footer>
-
+<script src="js/student-nav.js"></script>
 <script src="js/course-detail.js"></script>
 </body>
 </html>
