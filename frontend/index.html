@@ -12,60 +12,63 @@
 
 <body>
 
-<header>
-<nav aria-label="Main navigation">
-    <a href="index.html" class="nav-logo">
-        <img src="logos/highcharts-logo-dark.png" alt="Highcharts home">
-    </a>
+    <header>
+        <nav aria-label="Main navigation">
+            <a href="index.html" class="nav-logo">
+                <img src="logos/highcharts-logo-dark.png" alt="Highcharts home">
+            </a>
 
-    <ul>
-        <li><a href="index.html" aria-current="page">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="courses.html">Courses</a></li>
-        <li><a href="contact.html">Contact</a></li>
-    </ul>
+            <ul>
+                <li><a href="index.html" aria-current="page">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
 
-        <div class="student-nav-dropdown">
-    <button type="button"
-            class="login-btn student-nav-toggle"
-            aria-expanded="false"
-            aria-controls="student-nav-menu">
-        <span class="login-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                <circle cx="12" cy="8" r="4"/>
-                <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8z"/>
-            </svg>
-        </span>
-        Log in
-    </button>
+            <div class="student-nav-dropdown">
+                <button type="button"
+                        class="login-btn student-nav-toggle"
+                        aria-expanded="false"
+                        aria-controls="student-nav-menu">
+                    <span class="login-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                            <circle cx="12" cy="8" r="4"/>
+                            <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8z"/>
+                        </svg>
+                    </span>
+                    Log in
+                </button>
 
-    <div id="student-nav-menu" class="student-nav-menu" hidden>
-        <a href="login.html">Log in</a>
-        <a href="profile.html">My profile</a>
-        <span class="student-nav-disabled" aria-disabled="true">Settings</span>
-    </div>
-</div>
-</nav>
-</header>
+                <div id="student-nav-menu" class="student-nav-menu" hidden>
+                    <a href="login.html">Log in</a>
+                    <a href="profile.html">My profile</a>
+                    <span class="student-nav-disabled" aria-disabled="true">Settings</span>
+                </div>
+            </div>
+        </nav>
+    </header>
 
     <main>
-                <!-- Hero: title, search and filters (search/filter markup reused from courses.html) -->
+        <!-- Hero: title, search and filters (search/filter markup reused from courses.html) -->
         <section class="hero">
             <div class="hero-text">
                 <h1>Learn Highcharts, step by step</h1>
                 <p>Interactive courses that take you from your first chart to advanced data visualization.</p>
 
-                <div class="course-search">
-                    <label for="landing-search" class="visually-hidden">Search courses</label>
-                    <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
-                        <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
-                        <line x1="16.5" y1="16.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                    <input
-                        type="search"
-                        id="landing-search"
-                        placeholder="What do you want to learn?"
-                    >
+                <div class="hero-search">
+                    <div class="course-search">
+                        <label for="landing-search" class="visually-hidden">Search courses</label>
+                        <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/>
+                            <line x1="16.5" y1="16.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <input
+                            type="search"
+                            id="landing-search"
+                            placeholder="What do you want to learn?"
+                        >
+                    </div>
+                    <button type="button" id="landing-search-btn" class="btn-search">Search</button>
                 </div>
 
                 <div class="course-filters">
@@ -95,6 +98,20 @@
             <!-- Image placeholder (right side) -->
             <div class="hero-image" aria-hidden="true"></div>
         </section>
+
+        <!-- Search results: hidden until the user searches or filters -->
+        <section class="search-results" id="landing-results" hidden>
+            <div class="results-top">
+                <h2>Explore courses</h2>
+                <!-- button (not a link), because it changes something on this page -->
+                <button type="button" id="landing-results-close" class="results-close" aria-label="Close search results">✕</button>
+            </div>
+
+            <!-- Filled with up to 3 matching courses by landing.js -->
+            <div id="landing-results-list" class="course-grid"></div>
+
+            <a href="courses.html" class="see-all-link">See all courses</a>
+        </section>
     </main>
 
     <footer class="site-footer">
@@ -114,6 +131,7 @@
             <p>&copy; 2026 Highsoft Course Portal. Student project prototype.</p>
         </div>
     </footer>
+
     <script src="js/student-nav.js" defer></script>
 </body>
 </html>
