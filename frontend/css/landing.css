@@ -44,3 +44,65 @@ a.course-button {
     display: inline-block;
     text-decoration: none;
 }
+
+
+
+/* ============================================================
+   3. HERO
+   ============================================================ */
+
+/* Text left, image right */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    margin-top: 32px;
+}
+
+.hero h1 {
+    margin-top: 0;        /* style.css adds space above h1; not needed here */
+    font-size: 44px;
+    line-height: 1.15;
+}
+
+.hero-text > p {
+    color: var(--muted);
+    font-size: 18px;
+}
+
+/* Search field + Search button on one row */
+.hero-search {
+    display: flex;
+    gap: 12px;
+    margin: 24px 0 16px;
+}
+
+.hero-search .course-search {
+    max-width: none;      /* let the field fill the row here */
+}
+
+.btn-search {
+    padding: 0 24px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--brand);
+    background-color: var(--surface-card);
+    border: 1px solid var(--brand);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.15s;
+}
+
+.btn-search:hover {
+    background-color: var(--surface-page);
+}
+
+/* Image placeholder until we add a real image or chart */
+.hero-image {
+    aspect-ratio: 4 / 3;
+    background-color: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
