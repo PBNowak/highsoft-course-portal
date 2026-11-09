@@ -454,6 +454,11 @@ header nav a:hover {
     color: var(--success-ink);
 }
 
+.level-beginner {
+    background-color: var(--success-bg);
+    color: var(--success-ink);
+}
+
 .level-intermediate {
     background-color: var(--attention-bg);
     color: var(--attention-ink);
