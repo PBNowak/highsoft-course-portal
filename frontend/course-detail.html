@@ -23,39 +23,64 @@
             <li><a href="contact.html">Contact</a></li>
         </ul>
 
-        <a href="login.html" class="login-btn">
-            <span class="login-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                    <circle cx="12" cy="8" r="4"/>
-                    <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8z"/>
-                </svg>
-            </span>
-            Log in
-        </a>
+        <div class="student-nav-dropdown">
+    <button type="button"
+            class="login-btn student-nav-toggle"
+            aria-expanded="false"
+            aria-controls="student-nav-menu">
+        <span class="login-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8z"/>
+            </svg>
+        </span>
+        Log in
+    </button>
+
+    <div id="student-nav-menu" class="student-nav-menu" hidden>
+        <a href="login.html">Log in</a>
+        <a href="profile.html">My profile</a>
+        <span class="student-nav-disabled" aria-disabled="true">Settings</span>
+    </div>
+</div>
     </nav>
 </header>
     <main>
         <a href="courses.html" class="back-link">← Back to courses</a>
+    <div class="course-detail-top">
     <div class="course-detail-image">
-    <img
-        src="https://placehold.co/400x300?text=Course+Image"
-        alt=""
-    >
-</div>
-        <h1 id="course-title">Loading course...</h1>
+        <img
+            src="https://placehold.co/400x300?text=Course+Image"
+            alt=""
+        >
+    </div>
 
-    <p id="course-level"></p>
+    <div class="course-detail-info">
+        <p id="course-level"></p>
+<h1 id="course-title">Loading course...</h1>
+<p id="course-summary"></p>
+        <div class="course-detail-meta">
     <p id="course-duration"></p>
     <p id="course-lesson-count"></p>
+</div>
+    </div>
+</div>
+    <div class="course-detail-sections">
     <section class="course-learning">
-    <h2>What you'll learn</h2>
-    <ul id="learning-outcomes">
-    </ul>
-</section>
-<section class="course-about">
-    <h2>About this course</h2>
-    <p id="course-about-text"></p>
-</section>
+        <h2>What you'll learn</h2>
+        <ul id="learning-outcomes">
+    <li>Understand the basics of Highcharts</li>
+    <li>Set up your first chart</li>
+    <li>Add and customise chart data</li>
+    <li>Create a simple interactive chart</li>
+</ul>
+    </section>
+
+    <section class="course-about">
+        <h2>About this course</h2>
+        <p id="course-about-text"></p>
+    </section>
+</div>
 <section class="course-content">
     <h2>Course content</h2>
 
@@ -64,6 +89,13 @@
     <p id="lessons-status">Lessons coming soon.</p>
 </section>
 <div class="course-actions">
+    <label class="course-consent">
+    <input type="checkbox" id="course-consent">
+    I agree to let the portal store my course progress
+    so I can track it and see how my courses are used.
+    
+</label>
+<p id="course-consent-message" role="status"></p>
     <button
         type="button"
         id="start-course-btn"
@@ -92,7 +124,7 @@
         <p>&copy; 2026 Highsoft Course Portal. Student project prototype.</p>
     </div>
 </footer>
-
+<script src="js/student-nav.js"></script>
 <script src="js/course-detail.js"></script>
 </body>
 </html>

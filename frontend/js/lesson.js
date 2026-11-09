@@ -81,6 +81,12 @@ document.getElementById("lesson-progress").setAttribute(
 
 document.getElementById("progress-percentage").textContent =
     `${updatedPercent}%`;
+    // Open the completion page when all course lessons are finished
+if (courseLessons.length > 0 && completedCount === courseLessons.length) {
+    window.location.href =
+        `course-completed.html?course_id=${courseId}`;
+    return;
+}
 
     } catch (error) {
         console.error("Completion error:", error);
@@ -258,7 +264,7 @@ lessons.forEach((item, index) => {
     const link = document.createElement("a");
 
     link.href = `lesson.html?course_id=${courseId}&lesson_id=${item.id}`;
-    link.textContent = item.title;
+    link.textContent = `${index + 1} · ${item.title}`;
     if (completedLessonIds.includes(Number(item.id))) {
     link.textContent += " ✓";
     link.classList.add("completed");
@@ -324,3 +330,25 @@ if (checkPracticeButton) {
         }
     });
 }
+// Switch between Practice and Notes
+const practiceTab = document.getElementById("practice-tab");
+const notesTab = document.getElementById("notes-tab");
+
+const practicePanel = document.querySelector(".lesson-practice");
+const notesPanel = document.getElementById("notes-panel");
+
+practiceTab.addEventListener("click", () => {
+    practicePanel.hidden = false;
+    notesPanel.hidden = true;
+
+    practiceTab.classList.add("active");
+    notesTab.classList.remove("active");
+});
+
+notesTab.addEventListener("click", () => {
+    practicePanel.hidden = true;
+    notesPanel.hidden = false;
+
+    notesTab.classList.add("active");
+    practiceTab.classList.remove("active");
+});

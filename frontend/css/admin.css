@@ -7,6 +7,7 @@
      3. TOP COURSES CHART
      4. STUDENTS TABLE
      5. VIEW SWITCH (header)
+     6. STUDENT DETAILS
    ============================================================ */
 
 
@@ -237,4 +238,27 @@
     font-size: 12px;
     font-weight: 400;
     opacity: 0.8;
+}
+
+
+
+/* ============================================================
+   6. STUDENT DETAILS
+   ============================================================ */
+
+#student-details-list {
+    list-style: none;   /* remove the bullet points */
+    margin: 16px 0 0;
+    padding: 0;
+}
+
+/* A thin line between each course, like the table rows */
+#student-details-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+/* No line under the last course */
+#student-details-list li:last-child {
+    border-bottom: none;
 }

@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | Highsoft Course Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+    <nav aria-label="Main navigation">
+        <a href="index.html" class="nav-logo">
+            <img src="logos/highcharts-logo-dark.png" alt="Highcharts home">
+        </a>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <div class="student-nav-dropdown">
+    <button type="button"
+            class="login-btn student-nav-toggle"
+            aria-expanded="false"
+            aria-controls="student-nav-menu">
+        <span class="login-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8z"/>
+            </svg>
+        </span>
+        Log in
+    </button>
+
+    <div id="student-nav-menu" class="student-nav-menu" hidden>
+        <a href="login.html">Log in</a>
+        <a href="profile.html">My profile</a>
+        <span class="student-nav-disabled" aria-disabled="true">Settings</span>
+    </div>
+</div>
+    </nav>
+</header>
+
+    
+<main class="profile-page">
+    <div class="profile-container">
+
+        <h1>My profile</h1>
+
+        <!-- Student information -->
+        <section class="profile-student">
+            <div class="profile-avatar" aria-hidden="true">K</div>
+
+            
+<div class="profile-student-info">
+    <h2 id="profile-name">Loading student...</h2>
+    <p id="profile-email"></p>
+</div>
+
+<div class="profile-consent-controls">
+    <p id="profile-consent"></p>
+    <button type="button" id="profile-withdraw-consent" hidden>
+        Withdraw consent
+    </button>
+</div>
+
+        </section>
+
+        <!-- Overall progress -->
+        <section class="profile-progress">
+            <h2>Your progress</h2>
+
+            <div class="profile-progress-content">
+                
+<div class="profile-overall">
+    <h3>Overall progress</h3>
+
+    <div class="profile-progress-circle" id="profile-progress-circle">
+        <div class="profile-progress-circle-label">
+    <span id="profile-overall-progress">—</span>
+    <span class="profile-overall-caption">overall</span>
+</div>
+    </div>
+</div>
+
+
+                <div class="profile-course-chart">
+                    <h3>Progress per course</h3>
+                    <div id="profile-progress-chart"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Courses in progress -->
+        <section class="profile-in-progress">
+            <h2>In progress</h2>
+            <div id="profile-active-courses"></div>
+        </section>
+
+        <!-- Completed courses -->
+        <section class="profile-completed">
+            <h2>Completed</h2>
+            <div id="profile-completed-courses"></div>
+        </section>
+
+        <!-- Recommended courses -->
+        <section class="profile-recommended">
+            <h2>Recommended for you</h2>
+            <div id="profile-recommended-courses"></div>
+        </section>
+
+    </div>
+</main>
+
+    <footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-brand">
+            <h2>Highsoft Course Portal</h2>
+            <p>Learn, practise and grow your data visualisation skills.</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="courses.html">Courses</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2026 Highsoft Course Portal. Student project prototype.</p>
+    </div>
+</footer>
+
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="js/student-nav.js"></script>
+<script src="js/profile.js"></script>
+</body>
+</html>
