@@ -14,11 +14,15 @@
 /* ============================================================
    1. COLORS  (built on the Highcharts brand kit)
    ============================================================ */
+/* ============================================================
+   1. COLORS  (built on the Highcharts brand kit)
+   ============================================================ */
 :root {
     /* --- Surfaces --- */
     --surface-page: #F0F1FF;   /* Brand 100 — page background */
     --surface-card: #FFFFFF;   /* Neutral 0 — cards */
     --surface-band: #E1E3FF;   /* Brand 200 — bands / image box */
+    --band-dark:    #918FA3;   /* Neutral 400 — dark section band (landing page) */
 
     /* --- Text --- */
     --ink:    #18171C;   /* Neutral 900 — body text */
@@ -450,6 +454,11 @@ header nav a:hover {
     border-radius: 999px;
     font-size: 12px;
     font-weight: 600;
+    background-color: var(--success-bg);
+    color: var(--success-ink);
+}
+
+.level-beginner {
     background-color: var(--success-bg);
     color: var(--success-ink);
 }
