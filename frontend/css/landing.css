@@ -1,5 +1,46 @@
-/* Same arrow as the back link, flipped to point right */
-.level-arrow {
-    width: 48px;
-    transform: scaleX(-1);
+
+
+/* ============================================================
+   1. LAYOUT
+   ============================================================ */
+
+/* Space between all the big sections on the page */
+main > section {
+    margin-top: 72px;
+}
+
+/* Section headings centered, like in Figma */
+main > section > h2 {
+    text-align: center;
+    color: var(--brand-deep);
+}
+
+
+/* ============================================================
+   2. BUTTONS
+   ============================================================ */
+
+/* Shared look for link-buttons on this page */
+.btn {
+    display: inline-block;
+    padding: 10px 28px;
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.15s;
+}
+
+.btn-primary {
+    background-color: var(--brand);
+    color: #FFFFFF;
+}
+
+.btn-primary:hover {
+    background-color: var(--brand-hover);
+}
+
+/* "Continue" is a link, but should look like the course buttons */
+a.course-button {
+    display: inline-block;
+    text-decoration: none;
 }
