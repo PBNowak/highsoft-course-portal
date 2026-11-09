@@ -1,4 +1,19 @@
-
+/* ============================================================
+   LANDING PAGE — STYLES
+   Developed with AI assistance (Claude, Anthropic).
+   Uses the color variables from style.css. Course cards,
+   search field and filter pills are reused from style.css.
+   Contents:
+     1. LAYOUT
+     2. BUTTONS
+     3. HERO
+     4. SEARCH RESULTS PANEL
+     5. NEW STUDENT SECTION
+     6. CONTINUE SECTION
+     7. COURSE STRUCTURE (levels)
+     8. CALL TO ACTION
+     9. MOBILE
+   ============================================================ */
 
 /* ============================================================
    1. LAYOUT
@@ -160,10 +175,7 @@ a.course-button {
    5. NEW STUDENT SECTION
    ============================================================ */
 
-/* Full-width color band.
-   main has a max width, so the section can't stretch to the edges itself.
-   The shadow paints the same color far out to both sides, and clip-path
-   cuts it off above and below. The text stays where it is. */
+
 .new-user {
     padding: 48px 0;
     text-align: center;
@@ -202,4 +214,162 @@ a.course-button {
 .feature-card p {
     margin: 0;
     color: var(--muted);
+}
+
+
+
+/* ============================================================
+   6. CONTINUE SECTION
+   ============================================================ */
+
+   /* Same full-width dark band as the new student section */
+.continue {
+    padding: 48px 0;
+    background-color: var(--band-dark);
+    box-shadow: 0 0 0 100vmax var(--band-dark);
+    clip-path: inset(0 -100vmax);
+}
+
+.continue-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.continue-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px;
+    background-color: var(--surface-page);  
+    border: 1px solid var(--ink);
+    border-radius: 4px;
+}
+
+.continue-card h3 {
+    margin: 0;
+}
+
+.continue-status,
+.continue-lessons {
+    margin: 0;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+/* Progress bar: same look as in the admin students table (admin.css) */
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: var(--surface-band);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--brand);
+    border-radius: 999px;
+}
+
+.continue-card .course-button {
+    margin-top: 8px;
+}
+
+
+
+/* ============================================================
+   7. COURSE STRUCTURE (levels)
+   ============================================================ */
+
+.course-structure {
+    text-align: center;
+}
+
+/* Beginner → Intermediate → Advanced on one row */
+.levels {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin: 32px 0 24px;
+}
+
+.level-box {
+    min-width: 150px;
+    padding: 18px 24px;
+    font-weight: 600;
+    border: 1px solid var(--border-strong);
+    border-radius: 4px;
+}
+
+/* Same arrow as the back link, flipped to point right */
+.level-arrow {
+    width: 48px;
+    color: var(--ink);
+    transform: scaleX(-1);
+}
+
+.course-structure > p {
+    color: var(--muted);
+}
+
+
+
+/* ============================================================
+   8. CALL TO ACTION
+   ============================================================ */
+
+/* Rounded card behind the heading and button */
+.cta {
+    display: flex;
+    flex-direction: column;   /* heading on top, button under */
+    align-items: center;      /* both centered */
+    gap: 16px;
+    max-width: 420px;
+    margin-left: auto;        /* auto on both sides = card centered on the page */
+    margin-right: auto;
+    margin-bottom: 72px;
+    padding: 40px 24px;
+    background-color: var(--surface-card);
+    border-radius: 999px;     /* the round "pill" shape  */
+}
+
+.cta h2 {
+    margin: 0 4 0;
+    font-size: 20px;
+}
+
+
+
+/* ============================================================
+   9. MOBILE
+   ============================================================ */
+
+@media (max-width: 800px) {
+    /* Hero: image goes under the text */
+    .hero {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    /* Levels stack, so the arrows would point the wrong way */
+    .level-arrow {
+        display: none;
+    }
+
+    .cta {
+        border-radius: 24px;
+    }
+    
+    /* Search field and button: let them share the width on small screens */
+    .hero-search .course-search {
+        flex-basis: 0;
+        min-width: 0;
+    }
 }
