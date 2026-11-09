@@ -165,4 +165,85 @@ function setUpSearch(courses) {
         .addEventListener("click", closeSearchResults);
 }
 
+
+
+// --- Continue where you left off ---
+// Kari (student 1) is our demo student, the same as on the profile page.
+const DEMO_STUDENT_ID = 1;
+
+// Build one "continue" card: title, progress bar and a Continue link
+function createContinueCard(course) {
+    const card = document.createElement("article");
+    card.className = "continue-card";
+
+    const title = document.createElement("h3");
+    title.textContent = course.title;
+
+    const status = document.createElement("p");
+    status.className = "continue-status";
+    status.textContent = `In progress · ${course.progress_percent}%`;
+
+    // Progress bar: same classes as the students table in the admin page
+    const bar = document.createElement("div");
+    bar.className = "progress-bar";
+    bar.setAttribute("aria-hidden", "true");   // the text above says the same for screen readers
+
+    const fill = document.createElement("div");
+    fill.className = "progress-fill";
+    fill.style.width = `${course.progress_percent}%`;
+    bar.appendChild(fill);
+
+    const lessons = document.createElement("p");
+    lessons.className = "continue-lessons";
+    lessons.textContent = `${course.completed_lessons} of ${course.total_lessons} lessons`;
+
+    // A link, because it takes you to another page
+    const link = document.createElement("a");
+    link.className = "course-button";
+    link.href = `course-detail.html?course_id=${course.course_id}`;
+    link.textContent = "Continue";
+
+    card.append(title, status, bar, lessons, link);
+    return card;
+}
+
+
+// Show Kari's courses if she has progress, otherwise the "New to Highcharts?" section
+async function loadContinueSection() {
+    const continueSection = document.getElementById("landing-continue");
+    const newUserSection = document.getElementById("landing-new-user");
+    const list = document.getElementById("landing-continue-list");
+
+    try {
+        const response = await fetch(`/api/students/${DEMO_STUDENT_ID}/courses`);
+
+        if (!response.ok) {
+            throw new Error("Could not fetch student progress");
+        }
+
+        const data = await response.json();
+
+        // Only courses that are not finished yet
+        const inProgress = data.courses.filter(course => course.progress_percent < 100);
+
+        if (inProgress.length === 0) {
+            // No progress (or no consent): keep showing "New to Highcharts?"
+            return;
+        }
+
+        list.innerHTML = "";
+        inProgress.forEach(course => {
+            list.appendChild(createContinueCard(course));
+        });
+
+        continueSection.hidden = false;
+        newUserSection.hidden = true;
+
+    } catch (error) {
+        // If something goes wrong, the page still shows "New to Highcharts?"
+        console.error("Could not load continue section:", error);
+    }
+}
+
 loadLandingPage();
+loadContinueSection();
