@@ -180,7 +180,7 @@ a.course-button {
     padding: 48px 0;
     text-align: center;
     background-color: var(--band-dark);
-    box-shadow: 0 0 0 100vmax var(--band-dark);
+    box-shadow: 0 0 0 100vmax var(--band-dark);   /* AI-assisted (Claude): trick to stretch the background colour to the screen edges */
     clip-path: inset(0 -100vmax);
 }
 
@@ -226,7 +226,7 @@ a.course-button {
 .continue {
     padding: 48px 0;
     background-color: var(--band-dark);
-    box-shadow: 0 0 0 100vmax var(--band-dark);
+    box-shadow: 0 0 0 100vmax var(--band-dark);       /* AI-assisted (Claude): trick to stretch the background colour to the screen edges */
     clip-path: inset(0 -100vmax);
 }
 
