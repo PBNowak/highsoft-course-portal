@@ -215,6 +215,11 @@ async function loadContinueSection() {
     const newUserSection = document.getElementById("landing-new-user");
     const list = document.getElementById("landing-continue-list");
 
+        // Demo logged out: keep showing "New to Highcharts?" instead of Kari's courses
+    if (localStorage.getItem("demoLoggedOut") === "true") {
+        return;
+    }
+
     try {
         const response = await fetch(`/api/students/${DEMO_STUDENT_ID}/courses`);
 
