@@ -331,7 +331,7 @@ def get_admin_courses():
             ) t ON t.course_id = c.id
 
             -- p = how many lessons each consenting student has completed per course.
-            nei 
+            -- LEFT JOIN: keep the course even if no student has started it. 
             LEFT JOIN (
                 SELECT l.course_id, lc.student_id, COUNT(*) AS completed
                 FROM lesson_completions lc
