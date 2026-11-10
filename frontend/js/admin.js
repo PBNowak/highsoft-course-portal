@@ -1,3 +1,4 @@
+// AI-assisted (Claude): built with help from Claude, based on our Figma design and requirements. Tested, debugged and adjusted by Amanda.
 // ============================================================
 // ADMIN DASHBOARD
 // Fetches data from the admin API once, then fills in
@@ -134,7 +135,7 @@ function showStudentsTable(students) {
     });
 }
 
-
+// AI-assisted (Claude): drafted the date formatting
 // Turns "2026-10-21 18:00:00" into "21 Oct"
 function formatDate(dateText) {
     // A student who has consented but not started has no date yet
@@ -174,12 +175,14 @@ function showCoursesChart(mode) {
     const titles = sorted.map(course => course.title);
     const values = sorted.map(course => isCount ? course.students_started : course.avg_completion);
 
+    // AI-assisted (Claude): suggested getComputedStyle to read the CSS color
     // Highcharts can't read CSS variables, so we read the real color value
     // from :root in style.css. Then the chart always matches the palette.
     const brandColor = getComputedStyle(document.documentElement)
         .getPropertyValue("--brand").trim();
 
-    // Highcharts.chart(id of the div, settings)
+     // AI-assisted (Claude): drafted the Highcharts settings
+     // Highcharts.chart(id of the div, settings)
     Highcharts.chart("courses-chart", {
         chart: {
             type: "column",
@@ -249,7 +252,7 @@ async function showStudentDetails(studentId, studentName) {
     panel.hidden = false;   // show the panel
     }
 
-
+// AI-assisted (Claude): suggested event delegation with closest()
 // One listener on the table body catches clicks on every View button
 document.getElementById("students-table-body").addEventListener("click", event => {
     const button = event.target.closest(".view-btn");

@@ -303,7 +303,7 @@ def get_student_courses(student_id):
 # Started course = at least one completed lesson.
 # Completion % = completed lessons / total lessons in the course.
 # ============================================================
-
+# Rules for the calculations decided by us (see above). SQL queries suggested by AI (Claude) and tested by Amanda.
 
 # --- Admin: progress per course (used by the Top courses chart) ---
 @app.route("/api/admin/courses")
@@ -331,7 +331,7 @@ def get_admin_courses():
             ) t ON t.course_id = c.id
 
             -- p = how many lessons each consenting student has completed per course.
-            -- LEFT JOIN: keep the course even if no student has started it.
+            -- LEFT JOIN: keep the course even if no student has started it. 
             LEFT JOIN (
                 SELECT l.course_id, lc.student_id, COUNT(*) AS completed
                 FROM lesson_completions lc
