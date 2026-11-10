@@ -1,3 +1,4 @@
+// AI-assisted (Claude): built with help from Claude, based on our Figma design and requirements. Tested, debugged and adjusted by Amanda.
 // ============================================================
 // LANDING PAGE
 // Fetches courses from the API and shows them on the front page.
