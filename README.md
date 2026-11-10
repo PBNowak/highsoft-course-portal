@@ -310,6 +310,7 @@ Implemented features:
 - Top courses chart made with Highcharts, sortable by most started, highest completion and lowest completion
 - Students table with courses started, progress bar and last active date
 - Admin navigation with a switch to the student view
+- Student details: clicking "View" shows the student's courses and progress
 
 **New API endpoints:**
 - `GET /api/admin/courses` — returns how many students have started each course and their average completion.
@@ -330,16 +331,47 @@ If the Flask server crashes when it restarts automatically (WinError 10038), sta
 
     flask --app backend/app.py run
 
-**Not done yet:**
-- Student details when clicking "View"
-- Switch from the student pages to the admin view
-   
-### Next Steps
+## Landing Page
 
-- Add the student/admin switch to all pages.
-- Show student details in the admin dashboard.
-- Build the landing page and student profile page.
+The landing page (`index.html`) is the start page for students.
+
+Implemented features:
+- Hero with search and filters that show matching courses on the page
+- "Continue where you left off": shows the demo student's courses in progress (`GET /api/students/1/courses`)
+- "New to Highcharts?" section for students without progress
+- Three featured courses, how the courses are structured (Beginner → Intermediate → Advanced), and a call to action
+- Course images are decorative and use an empty `alt=""`, since the card title already names the course
+
+## Demo Login
+
+The project has no real login system. Instead, all student pages show the demo user Kari in the navigation.
+
+- The menu has My profile, Log out and Switch to admin view
+- Log out is a demo: `localStorage` remembers the state across pages
+- When logged out, the button says "Log in", My profile is hidden, and the landing page shows "New to Highcharts?" instead of Kari's courses
+- The admin page has a switch back to the student view
+
+## Next Steps
+
 - Store course and lesson duration as minutes for accurate sorting and filtering.
 - Expand the interactive lesson exercises and Highcharts examples with lesson-specific content.
 - Update the Figma design to match the implemented solution.
 - Continue improving accessibility and responsive design.
+
+
+## AI Usage
+
+We have used AI tools as coding assistants during development. Amanda used Claude (Anthropic) and Paulina used ChatGPT (OpenAI).
+
+**How we used AI:**
+- To explain code and concepts we were unsure about
+- To suggest code for features we had already planned, such as parts of the JavaScript, CSS and Flask endpoints
+- To find and explain errors when something did not work
+
+**What we did ourselves:**
+- Decided the scope, user flows and requirements
+- Made the design decisions in Figma and decided how each page should work
+- Tested all features in the browser
+- Fixed bugs and adjusted the AI suggestions to fit our project
+
+We did not copy suggestions without checking them. We ran and tested the code before committing, changed what did not fit, and asked the AI to explain code we did not understand.
