@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Highsoft Course Portal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+<nav aria-label="Main navigation">
+    <a href="index.html" class="nav-logo">
+        <img src="logos/highcharts-logo-dark.png" alt="Highcharts home">
+    </a>
+
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+        <div class="student-nav-dropdown">
+    <button type="button"
+            class="login-btn student-nav-toggle"
+            aria-expanded="false"
+            aria-controls="student-nav-menu">
+        <span class="login-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8z"/>
+            </svg>
+        </span>
+        <span class="demo-user-name">Kari (demo user)</span>
+    </button>
+
+    <div id="student-nav-menu" class="student-nav-menu" hidden>
+        <a href="profile.html">My profile</a>
+        <a href="index.html" class="demo-logout">Log out</a>
+        <a href="admin.html">Switch to admin view</a>
+    </div>
+</div>
+</nav>
+
+    </header>
+
+    <main class="contact-page">
+        <section class="contact-container">
+            <h1>Contact us</h1>
+            <p>
+                Can't find the answer you're looking for?
+                Send us a message and we'll be happy to help.
+            </p>
+
+            <form id="contact-form">
+                <label for="contact-name">Name</label>
+                <input type="text" id="contact-name" name="name" required>
+
+                <label for="contact-email">Email</label>
+                <input type="email" id="contact-email" name="email" required>
+
+                <label for="contact-subject">Subject</label>
+                <select id="contact-subject" name="subject" required>
+                    <option value="">Choose a subject</option>
+                    <option value="course">Course question</option>
+                    <option value="technical">Technical problem</option>
+                    <option value="progress">Progress tracking</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="contact-message">Message</label>
+                <textarea id="contact-message" name="message" rows="6" required></textarea>
+
+                <button type="submit">Send message</button>
+            </form>
+
+            <p id="contact-feedback" role="status" aria-live="polite"></p>
+
+            <a href="courses.html">Back to courses</a>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h2>Highsoft Course Portal</h2>
+                <p>Learn, practise and grow your data visualisation skills.</p>
+            </div>
+
+            <nav class="footer-nav" aria-label="Footer navigation">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="courses.html">Courses</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Highsoft Course Portal. Student project prototype.</p>
+        </div>
+    </footer>
+
+<script src="js/contact.js" defer></script>
+<script src="js/student-nav.js" defer></script>
+<script src="js/student-help.js" defer></script>
+
+</body>
+</html>

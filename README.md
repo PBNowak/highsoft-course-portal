@@ -332,6 +332,9 @@ Implemented features:
 - Redirects students back to Course Detail if the course is not fully completed.
 - Displays a confirmation message and navigation buttons.
 - Uses the same styling and IBM Plex Sans typography as the other student pages.
+- Floating "Need help?" button on student pages with FAQs about starting courses, tracking progress, and continuing lessons.
+- Accessible contact form with name, email, subject, and message fields. Currently a frontend demo with validation and feedback; messages are not sent or stored.
+
 
 The page currently uses demo student Kari (ID 1).
 
