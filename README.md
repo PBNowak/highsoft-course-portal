@@ -45,37 +45,74 @@ This separation allows the frontend to display course information without having
 - Git installed
 - A code editor such as Visual Studio Code
 
-### Setup
+### Setup (Windows PowerShell)
 
-1. Clone the GitHub repository and open the project folder.
+Follow these steps in order. Run all commands from the project root folder.
 
-2. Create a Python virtual environment:
+**1. Clone the repository**
 
-   ```bash
-   python -m venv .venv
-   ```
+```powershell
+git clone https://github.com/PBNowak/highsoft-course-portal.git
+cd highsoft-course-portal
+```
 
-3. Activate the virtual environment (Windows PowerShell):
+If you already have the project downloaded, simply open its folder in VS Code.
 
-   ```powershell
-   .\.venv\Scripts\Activate.ps1
-   ```
+**2. Create a virtual environment**
 
-4. Install the backend dependencies:
+```powershell
+python -m venv .venv
+```
 
-   ```bash
-   pip install -r backend/requirements.txt
-   ```
+**3. Activate the virtual environment**
 
-5. Start the Flask server from the project root:
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
 
-   ```bash
-   python backend/app.py
-   ```
+**4. Install dependencies**
 
-6. Open the Course Overview page in your browser:
+```powershell
+python -m pip install -r backend/requirements.txt
+```
 
-   http://127.0.0.1:5000/courses.html
+**5. Initialize the database**
+
+```powershell
+python -c "from backend.database import init_db; init_db()"
+```
+
+**6. Add the sample data**
+
+```powershell
+python -c "from backend.database import seed_db; seed_db()"
+```
+
+These two steps are required when setting up the project for the first time. The database file is stored locally and is not included in the GitHub repository.
+
+**7. Start the Flask server**
+
+```powershell
+flask --app backend/app.py run
+```
+
+Leave this terminal running while using the application.
+
+**8. Open the application**
+
+Open the following address in your browser:
+
+http://127.0.0.1:5000/index.html
+
+The application must be opened through Flask so that the frontend can communicate with the API.
+
+### Troubleshooting
+
+- **Pages keep loading or course data is missing:** Check that steps 5 and 6 were completed successfully.
+- **Flask does not start:** Make sure the virtual environment is activated and dependencies are installed.
+- **PowerShell blocks virtual environment activation:** Run `Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass`, then try activating the environment again.
+- **Port 5000 is already in use:** Stop any previously running Flask server before starting another one.
+
 
 ### API Endpoint
 
@@ -106,7 +143,7 @@ The interface is being styled based on our high-fidelity Figma designs.
 
 The Course Detail page is now implemented and connected to the Flask API and SQLite database. Users can open individual courses and return to the Course Overview page.
 
-Future development will focus on connecting the Lesson page to the Flask API, implementing the student-facing progress interface, adding course enrolment functionality, and developing the admin dashboard. The shared backend APIs for student consent and lesson completions are already implemented and tested.
+The core student learning flow is implemented, including course browsing, course details, interactive lessons, progress tracking, course completion, and the student profile. The admin dashboard provides an overview of student activity and course progress. The portal currently uses a demo login system rather than real authentication. Future improvements include student help features, additional learning interactions, and accessibility refinements. The shared backend APIs for student consent and lesson completions are already implemented and tested.
 
 ### Backend Development
 
@@ -222,7 +259,7 @@ Four fictional demo students have been added: Kari, Emma, Jonas, and Sofie. Kari
 - Consent and lesson-completion functionality have been tested successfully using the Flask API and SQLite.
 - The system currently uses fictional demo students without authentication. It is intended for demonstration purposes only and is not suitable for storing real student information without additional security and privacy measures.
 
-The backend functionality is implemented, but the student-facing progress interface and admin dashboard integration are still in development.
+The student-facing progress system is implemented and connected to the Flask API and SQLite database. Students can track completed lessons, view course progress, and access their profile dashboard. The admin dashboard displays student activity, course progress, and completion statistics using demo data.
 
 ## Student Lesson Page
 
@@ -298,7 +335,7 @@ Implemented features:
 
 The page currently uses demo student Kari (ID 1).
 
-The overall progress statistic will be connected to the Student Profile dashboard in a later development step. The "View my progress" button will also be linked to the Profile page once it is implemented.
+The Course Completed page is connected to the Student Profile dashboard. Overall progress is calculated using saved student data, and the "View my progress" button takes students directly to their profile, where they can see their learning progress, completed courses, and courses in progress.
 
 
 ## Admin Dashboard
